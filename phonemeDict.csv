@@ -1,44 +1,1254 @@
-"word,phonemes"
-"a,?"
-"able,?e? b l?"
-"about,? ?b a? t"
-"above,? ?b ? v"
-"across,? ?k r ? s"
-"act,� k t"
-"active,?� k t ? v"
-"actor,?� k t ?"
-"actually,?� k t? ? ? l i"
-"add,� d"
-"address,? ?d r ? s"
-"afraid,? ?f r e? d"
-"after,??? f t ?"
-"afternoon,??? f t ? ?n u? n"
-"again,? ?? e? n"
-"against,? ?? e? n s t"
-"age,e? d?"
-"ago,? ?? o?"
-"agree,? ?? r i?"
-"ahead,? ?h ? d"
-"air,e?"
-"airplane,?e? p l e? n"
-"airport,?e? p ?? t"
-"all,?? l"
-"almost,??? l m o? s t"
-"alone,? ?l o? n"
-"along,? ?l ? ?"
-"already,?? l ?r ? d i"
-"also,??? l s o?"
-"although,?? l ?� o?"
-"always,??? l w e? z"
-"am,� m"
-"amazing,? ?m e? z ? ?"
-"American,? ?m ? r ? k ? n"
-"among,? ?m ? ?"
-"an,� n"
-"and,� n d"
-"angry,?� ? ? r i"
-"animal,?� n ? m l?"
-"another,? ?n ? � ?"
+word,phonemes
+a,ə
+able,ˈeɪ b l̩
+about,ə ˈb aʊ t
+above,ə ˈb ʌ v
+across,ə ˈk r ɒ s
+act,æ k t
+active,ˈæ k t ɪ v
+actor,ˈæ k t ə
+actually,ˈæ k tʃ ʊ ə l i
+add,æ d
+address,ə ˈd r ɛ s
+afraid,ə ˈf r eɪ d
+after,ˈɑː f t ə
+afternoon,ˌɑː f t ə ˈn uː n
+again,ə ˈɡ eɪ n
+against,ə ˈɡ eɪ n s t
+age,eɪ dʒ
+ago,ə ˈɡ oʊ
+agree,ə ˈɡ r iː
+ahead,ə ˈh ɛ d
+air,eə
+airplane,ˈeə p l eɪ n
+airport,ˈeə p ɔː t
+all,ɔː l
+almost,ˈɔː l m oʊ s t
+alone,ə ˈl oʊ n
+along,ə ˈl ɒ ŋ
+already,ɔː l ˈr ɛ d i
+also,ˈɔː l s oʊ
+although,ɔː l ˈð oʊ
+always,ˈɔː l w eɪ z
+am,æ m
+amazing,ə ˈm eɪ z ɪ ŋ
+American,ə ˈm ɛ r ɪ k ə n
+among,ə ˈm ʌ ŋ
+an,æ n
+and,æ n d
+angry,ˈæ ŋ ɡ r i
+animal,ˈæ n ɪ m l̩
+another,ə ˈn ʌ ð ə
+answer,ˈɑː n s ə
+any,ˈɛ n i
+anybody,ˈɛ n i ˌb ɒ d i
+anything,ˈɛ n i θ ɪ ŋ
+anywhere,ˈɛ n i w eə
+apartment,ə ˈp ɑː t m ə n t
+appear,ə ˈp ɪə
+apple,ˈæ p l̩
+are,ɑː
+area,ˈeə r i ə
+arm,ɑː m
+army,ˈɑː m i
+around,ə ˈr aʊ n d
+arrive,ə ˈr aɪ v
+art,ɑː t
+article,ˈɑː t ɪ k l̩
+artist,ˈɑː t ɪ s t
+as,æ z
+ask,ɑː s k
+at,æ t
+attack,ə ˈt æ k
+attention,ə ˈt ɛ n ʃ n̩
+aunt,ɑː n t
+author,ˈɔː θ ə
+autumn,ˈɔː t ə m
+available,ə ˈv eɪ l ə b l̩
+away,ə ˈw eɪ
+awful,ˈɔː f l̩
+baby,ˈb eɪ b i
+back,b æ k
+bad,b æ d
+bag,b æ ɡ
+ball,b ɔː l
+banana,b ə ˈn ɑː n ə
+bank,b æ ŋ k
+bath,b ɑː θ
+bathroom,ˈb ɑː θ r ʊ m
+be,b iː
+beach,b iː tʃ
+bear,b eə
+beautiful,ˈb j uː t ɪ f ʊ l
+because,b ɪ ˈk ɒ z
+become,b ɪ ˈk ʌ m
+bed,b ɛ d
+bedroom,ˈb ɛ d r ʊ m
+beer,b ɪə
+before,b ɪ ˈf ɔː
+begin,b ɪ ˈɡ ɪ n
+behind,b ɪ ˈh aɪ n d
+believe,b ɪ ˈl iː v
+bell,b ɛ l
+below,b ɪ ˈl oʊ
+beside,b ɪ ˈs aɪ d
+best,b ɛ s t
+better,ˈb ɛ t ə
+between,b ɪ ˈt w iː n
+big,b ɪ ɡ
+bike,b aɪ k
+bird,b ɜː d
+birthday,ˈb ɜː θ d eɪ
+bit,b ɪ t
+black,b l æ k
+blood,b l ʌ d
+blue,b l uː
+boat,b oʊ t
+body,ˈb ɒ d i
+book,b ʊ k
+both,b oʊ θ
+bottle,ˈb ɒ t l̩
+box,b ɒ k s
+boy,b ɔɪ
+bread,b r ɛ d
+break,b r eɪ k
+breakfast,ˈb r ɛ k f ə s t
+bring,b r ɪ ŋ
+brother,ˈb r ʌ ð ə
+brown,b r aʊ n
+build,b ɪ l d
+building,ˈb ɪ l d ɪ ŋ
+bus,b ʌ s
+business,ˈb ɪ z n ɪ s
+busy,ˈb ɪ z i
+but,b ʌ t
+buy,b aɪ
+by,b aɪ
+cake,k eɪ k
+call,k ɔː l
+camera,ˈk æ m r ə
+can,k æ n
+car,k ɑː
+card,k ɑː d
+care,k eə
+careful,ˈk eə f ʊ l
+carry,ˈk æ r i
+cat,k æ t
+catch,k æ tʃ
+cellphone,ˈs ɛ l f oʊ n
+center,ˈs ɛ n t ə
+chair,tʃ eə
+change,tʃ eɪ n dʒ
+cheap,tʃ iː p
+check,tʃ ɛ k
+child,tʃ aɪ l d
+children,ˈtʃ ɪ l d r ə n
+choice,tʃ ɔɪ s
+choose,tʃ uː z
+city,ˈs ɪ t i
+class,k l ɑː s
+classroom,ˈk l ɑː s r ʊ m
+clean,k l iː n
+clear,k l ɪə
+clock,k l ɒ k
+close,k l oʊ z
+clothes,k l oʊ ð z
+cloud,k l aʊ d
+coat,k oʊ t
+coffee,ˈk ɒ f i
+cold,k oʊ l d
+college,ˈk ɒ l ɪ dʒ
+color,ˈk ʌ l ə
+come,k ʌ m
+common,ˈk ɒ m ə n
+company,ˈk ʌ m p ə n i
+complete,k ə m ˈp l iː t
+computer,k ə m ˈp j uː t ə
+consider,k ə n ˈs ɪ d ə
+continue,k ə n ˈt ɪ n j uː
+control,k ə n ˈt r oʊ l
+cook,k ʊ k
+cool,k uː l
+copy,ˈk ɒ p i
+corner,ˈk ɔː n ə
+correct,k ə ˈr ɛ k t
+cost,k ɒ s t
+could,k ʊ d
+country,ˈk ʌ n t r i
+course,k ɔː s
+cousin,ˈk ʌ z n̩
+cover,ˈk ʌ v ə
+cow,k aʊ
+cream,k r iː m
+credit,ˈk r ɛ d ɪ t
+cross,k r ɒ s
+crowd,k r aʊ d
+cry,k r aɪ
+cup,k ʌ p
+cut,k ʌ t
+dad,d æ d
+dance,d ɑː n s
+danger,ˈd eɪ n dʒ ə
+dark,d ɑː k
+date,d eɪ t
+daughter,ˈd ɔː t ə
+day,d eɪ
+dead,d ɛ d
+deal,d iː l
+dear,d ɪə
+death,d ɛ θ
+decide,d ɪ ˈs aɪ d
+deep,d iː p
+degree,d ɪ ˈɡ r iː
+desk,d ɛ s k
+develop,d ɪ ˈv ɛ l ə p
+dialogue,ˈd aɪ ə l ɒ ɡ
+did,d ɪ d
+die,d aɪ
+different,ˈd ɪ f r ə n t
+difficult,ˈd ɪ f ɪ k ə l t
+dinner,ˈd ɪ n ə
+direction,d ɪ ˈr ɛ k ʃ n̩
+dirty,ˈd ɜː t i
+discover,d ɪ ˈs k ʌ v ə
+dish,d ɪ ʃ
+do,d uː
+doctor,ˈd ɒ k t ə
+dog,d ɒ ɡ
+dollar,ˈd ɒ l ə
+door,d ɔː
+double,ˈd ʌ b l̩
+down,d aʊ n
+draw,d r ɔː
+dream,d r iː m
+dress,d r ɛ s
+drink,d r ɪ ŋ k
+drive,d r aɪ v
+driver,ˈd r aɪ v ə
+drop,d r ɒ p
+dry,d r aɪ
+during,ˈd j ʊə r ɪ ŋ
+each,iː tʃ
+ear,ɪə
+early,ˈɜː l i
+earth,ɜː θ
+east,iː s t
+easy,ˈiː z i
+eat,iː t
+edge,ɛ dʒ
+education,ˌɛ dʒ ʊ ˈk eɪ ʃ n̩
+effect,ɪ ˈf ɛ k t
+egg,ɛ ɡ
+eight,eɪ t
+either,ˈaɪ ð ə
+elder,ˈɛ l d ə
+electric,ɪ ˈl ɛ k t r ɪ k
+else,ɛ l s
+employ,ɪ m ˈp l ɔɪ
+empty,ˈɛ m p t i
+end,ɛ n d
+enemy,ˈɛ n ə m i
+energy,ˈɛ n ə dʒ i
+engine,ˈɛ n dʒ ɪ n
+english,ˈɪ ŋ ɡ l ɪ ʃ
+enjoy,ɪ n ˈdʒ ɔɪ
+enough,ɪ ˈn ʌ f
+enter,ˈɛ n t ə
+entire,ɪ n ˈt aɪə
+equal,ˈiː k w ə l
+escape,ɪ ˈs k eɪ p
+especially,ɪ ˈs p ɛ ʃ ə l i
+even,ˈiː v n̩
+evening,ˈiː v n ɪ ŋ
+event,ɪ ˈv ɛ n t
+ever,ˈɛ v ə
+every,ˈɛ v r i
+everybody,ˈɛ v r i b ɒ d i
+everyone,ˈɛ v r i w ʌ n
+everything,ˈɛ v r i θ ɪ ŋ
+everywhere,ˈɛ v r i w eə
+exact,ɪ ɡ ˈz æ k t
+examine,ɪ ɡ ˈz æ m ɪ n
+example,ɪ ɡ ˈz ɑː m p l̩
+excellent,ˈɛ k s ə l ə n t
+except,ɪ k ˈs ɛ p t
+excite,ɪ k ˈs aɪ t
+excuse,ɪ k ˈs k j uː z
+exercise,ˈɛ k s ə s aɪ z
+exist,ɪ ɡ ˈz ɪ s t
+expect,ɪ k ˈs p ɛ k t
+experience,ɪ k ˈs p ɪə r i ə n s
+explain,ɪ k ˈs p l eɪ n
+express,ɪ k ˈs p r ɛ s
+extra,ˈɛ k s t r ə
+eye,aɪ
+face,f eɪ s
+fact,f æ k t
+factory,ˈf æ k t r i
+fail,f eɪ l
+fair,f eə
+fall,f ɔː l
+family,ˈf æ m ɪ l i
+famous,ˈf eɪ m ə s
+far,f ɑː
+farm,f ɑː m
+fast,f ɑː s t
+fat,f æ t
+father,ˈf ɑː ð ə
+fault,f ɔː l t
+fear,f ɪə
+feed,f iː d
+feel,f iː l
+feeling,ˈf iː l ɪ ŋ
+fellow,ˈf ɛ l oʊ
+female,ˈf iː m eɪ l
+few,f j uː
+field,f iː l d
+fight,f aɪ t
+figure,ˈf ɪ ɡ ə
+fill,f ɪ l
+film,f ɪ l m
+final,ˈf aɪ n l̩
+find,f aɪ n d
+fine,f aɪ n
+finger,ˈf ɪ ŋ ɡ ə
+finish,ˈf ɪ n ɪ ʃ
+fire,ˈf aɪə
+first,f ɜː s t
+fish,f ɪ ʃ
+fit,f ɪ t
+five,f aɪ v
+fix,f ɪ k s
+flag,f l æ ɡ
+flat,f l æ t
+flight,f l aɪ t
+floor,f l ɔː
+flower,ˈf l aʊ ə
+fly,f l aɪ
+follow,ˈf ɒ l oʊ
+food,f uː d
+foot,f ʊ t
+for,f ɔː
+force,f ɔː s
+foreign,ˈf ɒ r ɪ n
+forest,ˈf ɒ r ɪ s t
+forget,f ə ˈɡ ɛ t
+form,f ɔː m
+forward,ˈf ɔː w ə d
+found,f aʊ n d
+four,f ɔː
+free,f r iː
+freedom,ˈf r iː d ə m
+fresh,f r ɛ ʃ
+friend,f r ɛ n d
+from,f r ɒ m
+front,f r ʌ n t
+fruit,f r uː t
+full,f ʊ l
+fun,f ʌ n
+funny,ˈf ʌ n i
+future,ˈf j uː tʃ ə
+game,ɡ eɪ m
+garden,ˈɡ ɑː d n̩
+gas,ɡ æ s
+gather,ˈɡ æ ð ə
+general,ˈdʒ ɛ n r ə l
+gentle,ˈdʒ ɛ n t l̩
+get,ɡ ɛ t
+girl,ɡ ɜː l
+give,ɡ ɪ v
+glad,ɡ l æ d
+glass,ɡ l ɑː s
+go,ɡ oʊ
+god,ɡ ɒ d
+gold,ɡ oʊ l d
+good,ɡ ʊ d
+government,ˈɡ ʌ v ə n m ə n t
+grade,ɡ r eɪ d
+grain,ɡ r eɪ n
+grass,ɡ r ɑː s
+great,ɡ r eɪ t
+green,ɡ r iː n
+ground,ɡ r aʊ n d
+group,ɡ r uː p
+grow,ɡ r oʊ
+guard,ɡ ɑː d
+guess,ɡ ɛ s
+guest,ɡ ɛ s t
+guide,ɡ aɪ d
+gun,ɡ ʌ n
+hair,h eə
+half,h ɑː f
+hand,h æ n d
+happen,ˈh æ p ə n
+happy,ˈh æ p i
+hard,h ɑː d
+hardly,ˈh ɑː d l i
+hat,h æ t
+have,h æ v
+he,h iː
+head,h ɛ d
+health,h ɛ l θ
+hear,h ɪə
+heart,h ɑː t
+heat,h iː t
+heavy,ˈh ɛ v i
+hello,h ɛ ˈl oʊ
+help,h ɛ l p
+her,h ɜː
+here,h ɪə
+herself,h ɜː ˈs ɛ l f
+hide,h aɪ d
+high,h aɪ
+hill,h ɪ l
+him,h ɪ m
+himself,h ɪ m ˈs ɛ l f
+his,h ɪ z
+history,ˈh ɪ s t r i
+hit,h ɪ t
+hold,h oʊ l d
+hole,h oʊ l
+home,h oʊ m
+honest,ˈɒ n ɪ s t
+hope,h oʊ p
+horse,h ɔː s
+hospital,ˈh ɒ s p ɪ t l̩
+hot,h ɒ t
+hotel,h oʊ ˈt ɛ l
+hour,ˈaʊə
+house,h aʊ s
+how,h aʊ
+however,h aʊ ˈɛ v ə
+huge,h j uː dʒ
+human,ˈh j uː m ə n
+hundred,ˈh ʌ n d r ə d
+hungry,ˈh ʌ ŋ ɡ r i
+hurry,ˈh ʌ r i
+hurt,h ɜː t
+husband,ˈh ʌ z b ə n d
+I,aɪ
+ice,aɪ s
+idea,aɪ ˈd ɪə
+if,ɪ f
+ill,ɪ l
+important,ɪ m ˈp ɔː t n̩ t
+in,ɪ n
+inch,ɪ n tʃ
+include,ɪ n ˈk l uː d
+increase,ɪ n ˈk r iː s
+indeed,ɪ n ˈd iː d
+industry,ˈɪ n d ə s t r i
+inform,ɪ n ˈf ɔː m
+inside,ɪ n ˈs aɪ d
+instead,ɪ n ˈs t ɛ d
+interest,ˈɪ n t r ə s t
+into,ˈɪ n t uː
+introduce,ˌɪ n t r ə ˈd j uː s
+invent,ɪ n ˈv ɛ n t
+invite,ɪ n ˈv aɪ t
+iron,ˈaɪə n
+is,ɪ z
+island,ˈaɪ l ə n d
+it,ɪ t
+its,ɪ t s
+itself,ɪ t ˈs ɛ l f
+jacket,ˈdʒ æ k ɪ t
+job,dʒ ɒ b
+join,dʒ ɔɪ n
+joke,dʒ oʊ k
+journey,ˈdʒ ɜː n i
+joy,dʒ ɔɪ
+judge,dʒ ʌ dʒ
+jump,dʒ ʌ m p
+just,dʒ ʌ s t
+keep,k iː p
+key,k iː
+kill,k ɪ l
+kind,k aɪ n d
+king,k ɪ ŋ
+kiss,k ɪ s
+kitchen,ˈk ɪ tʃ ɪ n
+knee,n iː
+knife,n aɪ f
+knock,n ɒ k
+know,n oʊ
+knowledge,ˈn ɒ l ɪ dʒ
+labor,ˈl eɪ b ə
+lack,l æ k
+lady,ˈl eɪ d i
+lake,l eɪ k
+land,l æ n d
+language,ˈl æ ŋ ɡ w ɪ dʒ
+large,l ɑː dʒ
+last,l ɑː s t
+late,l eɪ t
+laugh,l ɑː f
+law,l ɔː
+lay,l eɪ
+lazy,ˈl eɪ z i
+lead,l iː d
+leaf,l iː f
+learn,l ɜː n
+least,l iː s t
+leave,l iː v
+left,l ɛ f t
+leg,l ɛ ɡ
+length,l ɛ ŋ θ
+less,l ɛ s
+lesson,ˈl ɛ s n̩
+let,l ɛ t
+letter,ˈl ɛ t ə
+level,ˈl ɛ v l̩
+library,ˈl aɪ b r ə r i
+lie,l aɪ
+life,l aɪ f
+lift,l ɪ f t
+light,l aɪ t
+like,l aɪ k
+likely,ˈl aɪ k l i
+limit,ˈl ɪ m ɪ t
+line,l aɪ n
+lion,ˈl aɪə n
+lip,l ɪ p
+list,l ɪ s t
+listen,ˈl ɪ s n̩
+little,ˈl ɪ t l̩
+live,l ɪ v
+load,l oʊ d
+local,ˈl oʊ k l̩
+lock,l ɒ k
+lonely,ˈl oʊ n l i
+long,l ɒ ŋ
+look,l ʊ k
+lose,l uː z
+loss,l ɒ s
+lot,l ɒ t
+loud,l aʊ d
+love,l ʌ v
+low,l oʊ
+luck,l ʌ k
+lunch,l ʌ n tʃ
+machine,m ə ˈʃ iː n
+mad,m æ d
+main,m eɪ n
+major,ˈm eɪ dʒ ə
+make,m eɪ k
+man,m æ n
+manage,ˈm æ n ɪ dʒ
+many,ˈm ɛ n i
+map,m æ p
+march,m ɑː tʃ
+mark,m ɑː k
+market,ˈm ɑː k ɪ t
+marry,ˈm æ r i
+mass,m æ s
+master,ˈm ɑː s t ə
+match,m æ tʃ
+material,m ə ˈt ɪə r i ə l
+matter,ˈm æ t ə
+may,m eɪ
+me,m iː
+meal,m iː l
+mean,m iː n
+meaning,ˈm iː n ɪ ŋ
+measure,ˈm ɛ ʒ ə
+meat,m iː t
+medicine,ˈm ɛ d s n̩
+meet,m iː t
+member,ˈm ɛ m b ə
+memory,ˈm ɛ m ə r i
+men,m ɛ n
+mention,ˈm ɛ n ʃ n̩
+metal,ˈm ɛ t l̩
+middle,ˈm ɪ d l̩
+might,m aɪ t
+mile,m aɪ l
+milk,m ɪ l k
+million,ˈm ɪ l j ə n
+mind,m aɪ n d
+mine,m aɪ n
+minute,ˈm ɪ n ɪ t
+mirror,ˈm ɪ r ə
+miss,m ɪ s
+mistake,m ɪ ˈs t eɪ k
+mix,m ɪ k s
+model,ˈm ɒ d l̩
+modern,ˈm ɒ d n̩
+moment,ˈm oʊ m ə n t
+money,ˈm ʌ n i
+month,m ʌ n θ
+moon,m uː n
+more,m ɔː
+morning,ˈm ɔː n ɪ ŋ
+most,m oʊ s t
+mother,ˈm ʌ ð ə
+mountain,ˈm aʊ n t ɪ n
+mouth,m aʊ θ
+move,m uː v
+much,m ʌ tʃ
+music,ˈm j uː z ɪ k
+must,m ʌ s t
+my,m aɪ
+myself,m aɪ ˈs ɛ l f
+nail,n eɪ l
+name,n eɪ m
+narrow,ˈn æ r oʊ
+nation,ˈn eɪ ʃ n̩
+natural,ˈn æ tʃ r ə l
+near,n ɪə
+nearly,ˈn ɪə l i
+necessary,ˈn ɛ s ə s ə r i
+neck,n ɛ k
+need,n iː d
+needle,ˈn iː d l̩
+neighbor,ˈn eɪ b ə
+neither,ˈn aɪ ð ə
+nerve,n ɜː v
+nest,n ɛ s t
+net,n ɛ t
+never,ˈn ɛ v ə
+new,n j uː
+news,n j uː z
+newspaper,ˈn j uː z p eɪ p ə
+next,n ɛ k s t
+nice,n aɪ s
+night,n aɪ t
+nine,n aɪ n
+no,n oʊ
+noise,n ɔɪ z
+none,n ʌ n
+noon,n uː n
+nor,n ɔː
+north,n ɔː θ
+nose,n oʊ z
+not,n ɒ t
+note,n oʊ t
+nothing,ˈn ʌ θ ɪ ŋ
+notice,ˈn oʊ t ɪ s
+noun,n aʊ n
+now,n aʊ
+number,ˈn ʌ m b ə
+nurse,n ɜː s
+object,ˈɒ b dʒ ɪ k t
+observe,ə b ˈz ɜː v
+ocean,ˈoʊ ʃ n̩
+of,ɒ v
+off,ɒ f
+offer,ˈɒ f ə
+office,ˈɒ f ɪ s
+officer,ˈɒ f ɪ s ə
+often,ˈɒ f n̩
+oil,ɔɪ l
+old,oʊ l d
+on,ɒ n
+once,w ʌ n s
+one,w ʌ n
+only,ˈoʊ n l i
+open,ˈoʊ p ə n
+operate,ˈɒ p ə r eɪ t
+opinion,ə ˈp ɪ n j ə n
+or,ɔː
+orange,ˈɒ r ɪ n dʒ
+order,ˈɔː d ə
+organ,ˈɔː ɡ ə n
+original,ə ˈr ɪ dʒ ɪ n l̩
+other,ˈʌ ð ə
+our,aʊə
+out,aʊ t
+outside,aʊ t ˈs aɪ d
+over,ˈoʊ v ə
+own,oʊ n
+owner,ˈoʊ n ə
+page,p eɪ dʒ
+pain,p eɪ n
+paint,p eɪ n t
+pair,p eə
+paper,ˈp eɪ p ə
+paragraph,ˈp æ r ə ɡ r ɑː f
+parent,ˈp eə r ə n t
+park,p ɑː k
+part,p ɑː t
+particular,p ə ˈt ɪ k j ə l ə
+party,ˈp ɑː t i
+pass,p ɑː s
+past,p ɑː s t
+path,p ɑː θ
+patient,ˈp eɪ ʃ n̩ t
+pattern,ˈp æ t n̩
+pay,p eɪ
+peace,p iː s
+pen,p ɛ n
+pencil,ˈp ɛ n s l̩
+people,ˈp iː p l̩
+perfect,ˈp ɜː f ɪ k t
+perhaps,p ə ˈh æ p s
+period,ˈp ɪə r i ə d
+person,ˈp ɜː s n̩
+phone,f oʊ n
+photo,ˈf oʊ t oʊ
+phrase,f r eɪ z
+physical,ˈf ɪ z ɪ k l̩
+piano,p i ˈæ n oʊ
+pick,p ɪ k
+picture,ˈp ɪ k tʃ ə
+piece,p iː s
+pig,p ɪ ɡ
+pile,p aɪ l
+pilot,ˈp aɪ l ə t
+pin,p ɪ n
+pink,p ɪ ŋ k
+pipe,p aɪ p
+place,p l eɪ s
+plain,p l eɪ n
+plan,p l æ n
+plane,p l eɪ n
+plant,p l ɑː n t
+plate,p l eɪ t
+play,p l eɪ
+pleasant,ˈp l ɛ z n̩ t
+please,p l iː z
+pleasure,ˈp l ɛ ʒ ə
+plenty,ˈp l ɛ n t i
+plural,ˈp l ʊə r ə l
+pocket,ˈp ɒ k ɪ t
+point,p ɔɪ n t
+poison,ˈp ɔɪ z n̩
+police,p ə ˈl iː s
+polite,p ə ˈl aɪ t
+political,p ə ˈl ɪ t ɪ k l̩
+poor,p ʊə
+popular,ˈp ɒ p j ə l ə
+population,ˌp ɒ p j ə ˈl eɪ ʃ n̩
+position,p ə ˈz ɪ ʃ n̩
+possible,ˈp ɒ s ə b l̩
+post,p oʊ s t
+pot,p ɒ t
+potato,p ə ˈt eɪ t oʊ
+pound,p aʊ n d
+power,ˈp aʊə
+practice,ˈp r æ k t ɪ s
+prepare,p r ɪ ˈp eə
+present,ˈp r ɛ z n̩ t
+press,p r ɛ s
+pretty,ˈp r ɪ t i
+price,p r aɪ s
+pride,p r aɪ d
+print,p r ɪ n t
+private,ˈp r aɪ v ɪ t
+prize,p r aɪ z
+probable,ˈp r ɒ b ə b l̩
+problem,ˈp r ɒ b l ə m
+process,ˈp r oʊ s ɛ s
+produce,p r ə ˈd j uː s
+product,ˈp r ɒ d ʌ k t
+profession,p r ə ˈf ɛ ʃ n̩
+profit,ˈp r ɒ f ɪ t
+program,ˈp r oʊ ɡ r æ m
+progress,ˈp r oʊ ɡ r ɛ s
+promise,ˈp r ɒ m ɪ s
+proper,ˈp r ɒ p ə
+property,ˈp r ɒ p ə t i
+protect,p r ə ˈt ɛ k t
+proud,p r aʊ d
+prove,p r uː v
+provide,p r ə ˈv aɪ d
+public,ˈp ʌ b l ɪ k
+pull,p ʊ l
+pump,p ʌ m p
+pupil,ˈp j uː p l̩
+pure,p j ʊə
+purpose,ˈp ɜː p ə s
+push,p ʊ ʃ
+put,p ʊ t
+quality,ˈk w ɒ l ɪ t i
+quantity,ˈk w ɒ n t ɪ t i
+quarter,ˈk w ɔː t ə
+queen,k w iː n
+question,ˈk w ɛ s tʃ ə n
+quick,k w ɪ k
+quiet,ˈk w aɪə t
+quite,k w aɪ t
+race,r eɪ s
+radio,ˈr eɪ d i oʊ
+rail,r eɪ l
+rain,r eɪ n
+raise,r eɪ z
+range,r eɪ n dʒ
+rank,r æ ŋ k
+rapid,ˈr æ p ɪ d
+rate,r eɪ t
+rather,ˈr ɑː ð ə
+raw,r ɔː
+reach,r iː tʃ
+read,r iː d
+ready,ˈr ɛ d i
+real,r ɪə l
+realize,ˈr ɪə l aɪ z
+reason,ˈr iː z n̩
+receive,r ɪ ˈs iː v
+recent,ˈr iː s n̩ t
+record,ˈr ɛ k ɔː d
+red,r ɛ d
+reduce,r ɪ ˈd j uː s
+refer,r ɪ ˈf ɜː
+refuse,r ɪ ˈf j uː z
+regard,r ɪ ˈɡ ɑː d
+region,ˈr iː dʒ ə n
+regular,ˈr ɛ ɡ j ə l ə
+relation,r ɪ ˈl eɪ ʃ n̩
+religion,r ɪ ˈl ɪ dʒ ə n
+remain,r ɪ ˈm eɪ n
+remember,r ɪ ˈm ɛ m b ə
+remove,r ɪ ˈm uː v
+repair,r ɪ ˈp eə
+repeat,r ɪ ˈp iː t
+reply,r ɪ ˈp l aɪ
+report,r ɪ ˈp ɔː t
+represent,ˌr ɛ p r ɪ ˈz ɛ n t
+request,r ɪ ˈk w ɛ s t
+require,r ɪ ˈk w aɪə
+respect,r ɪ ˈs p ɛ k t
+rest,r ɛ s t
+result,r ɪ ˈz ʌ l t
+return,r ɪ ˈt ɜː n
+review,r ɪ ˈv j uː
+reward,r ɪ ˈw ɔː d
+rice,r aɪ s
+rich,r ɪ tʃ
+ride,r aɪ d
+right,r aɪ t
+ring,r ɪ ŋ
+rise,r aɪ z
+river,ˈr ɪ v ə
+road,r oʊ d
+rock,r ɒ k
+roll,r oʊ l
+roof,r uː f
+room,r ʊ m
+root,r uː t
+rope,r oʊ p
+rose,r oʊ z
+rough,r ʌ f
+round,r aʊ n d
+row,r oʊ
+rubber,ˈr ʌ b ə
+rude,r uː d
+rule,r uː l
+ruler,ˈr uː l ə
+run,r ʌ n
+rush,r ʌ ʃ
+sad,s æ d
+safe,s eɪ f
+sail,s eɪ l
+salt,s ɔː l t
+same,s eɪ m
+sand,s æ n d
+satellite,ˈs æ t ə l aɪ t
+save,s eɪ v
+say,s eɪ
+scale,s k eɪ l
+school,s k uː l
+science,ˈs aɪə n s
+scissors,ˈs ɪ z ə z
+score,s k ɔː
+scream,s k r iː m
+sea,s iː
+search,s ɜː tʃ
+season,ˈs iː z n̩
+seat,s iː t
+second,ˈs ɛ k ə n d
+secret,ˈs iː k r ɪ t
+section,ˈs ɛ k ʃ n̩
+see,s iː
+seed,s iː d
+seem,s iː m
+seize,s iː z
+seldom,ˈs ɛ l d ə m
+self,s ɛ l f
+sell,s ɛ l
+send,s ɛ n d
+sense,s ɛ n s
+sentence,ˈs ɛ n t ə n s
+separate,ˈs ɛ p ə r eɪ t
+series,ˈs ɪə r iː z
+serious,ˈs ɪə r i ə s
+serve,s ɜː v
+service,ˈs ɜː v ɪ s
+set,s ɛ t
+settle,ˈs ɛ t l̩
+seven,ˈs ɛ v n̩
+several,ˈs ɛ v r ə l
+sew,s oʊ
+shade,ʃ eɪ d
+shadow,ˈʃ æ d oʊ
+shake,ʃ eɪ k
+shall,ʃ æ l
+shallow,ˈʃ æ l oʊ
+shape,ʃ eɪ p
+share,ʃ eə
+sharp,ʃ ɑː p
+she,ʃ iː
+sheep,ʃ iː p
+sheet,ʃ iː t
+shelf,ʃ ɛ l f
+shell,ʃ ɛ l
+shelter,ˈʃ ɛ l t ə
+shine,ʃ aɪ n
+ship,ʃ ɪ p
+shirt,ʃ ɜː t
+shock,ʃ ɒ k
+shoe,ʃ uː
+shoot,ʃ uː t
+shop,ʃ ɒ p
+shore,ʃ ɔː
+short,ʃ ɔː t
+should,ʃ ʊ d
+shoulder,ˈʃ oʊ l d ə
+shout,ʃ aʊ t
+show,ʃ oʊ
+shut,ʃ ʌ t
+sick,s ɪ k
+side,s aɪ d
+sight,s aɪ t
+sign,s aɪ n
+signal,ˈs ɪ ɡ n l̩
+silence,ˈs aɪ l ə n s
+silent,ˈs aɪ l ə n t
+silk,s ɪ l k
+silly,ˈs ɪ l i
+silver,ˈs ɪ l v ə
+similar,ˈs ɪ m ɪ l ə
+simple,ˈs ɪ m p l̩
+since,s ɪ n s
+sing,s ɪ ŋ
+sir,s ɜː
+sister,ˈs ɪ s t ə
+sit,s ɪ t
+site,s aɪ t
+situation,ˌs ɪ tʃ ʊ ˈeɪ ʃ n̩
+six,s ɪ k s
+size,s aɪ z
+skill,s k ɪ l
+skin,s k ɪ n
+skirt,s k ɜː t
+sky,s k aɪ
+slave,s l eɪ v
+sleep,s l iː p
+slip,s l ɪ p
+slow,s l oʊ
+small,s m ɔː l
+smell,s m ɛ l
+smile,s m aɪ l
+smoke,s m oʊ k
+smooth,s m uː ð
+snake,s n eɪ k
+snow,s n oʊ
+so,s oʊ
+soap,s oʊ p
+social,ˈs oʊ ʃ l̩
+society,s ə ˈs aɪə t i
+sock,s ɒ k
+soft,s ɒ f t
+soil,s ɔɪ l
+soldier,ˈs oʊ l dʒ ə
+solid,ˈs ɒ l ɪ d
+some,s ʌ m
+son,s ʌ n
+song,s ɒ ŋ
+soon,s uː n
+sorry,ˈs ɒ r i
+sort,s ɔː t
+sound,s aʊ n d
+soup,s uː p
+south,s aʊ θ
+space,s p eɪ s
+speak,s p iː k
+special,ˈs p ɛ ʃ l̩
+speed,s p iː d
+spell,s p ɛ l
+spend,s p ɛ n d
+spirit,ˈs p ɪ r ɪ t
+splendid,ˈs p l ɛ n d ɪ d
+spoon,s p uː n
+sport,s p ɔː t
+spread,s p r ɛ d
+spring,s p r ɪ ŋ
+square,s k w eə
+stair,s t eə
+stamp,s t æ m p
+stand,s t æ n d
+standard,ˈs t æ n d ə d
+star,s t ɑː
+start,s t ɑː t
+state,s t eɪ t
+station,ˈs t eɪ ʃ n̩
+stay,s t eɪ
+steal,s t iː l
+steam,s t iː m
+steel,s t iː l
+step,s t ɛ p
+stick,s t ɪ k
+sticky,ˈs t ɪ k i
+still,s t ɪ l
+sting,s t ɪ ŋ
+stock,s t ɒ k
+stomach,ˈs t ʌ m ə k
+stone,s t oʊ n
+stop,s t ɒ p
+store,s t ɔː
+storm,s t ɔː m
+story,ˈs t ɔː r i
+straight,s t r eɪ t
+strange,s t r eɪ n dʒ
+stream,s t r iː m
+street,s t r iː t
+stretch,s t r ɛ tʃ
+strike,s t r aɪ k
+string,s t r ɪ ŋ
+strong,s t r ɒ ŋ
+structure,ˈs t r ʌ k tʃ ə
+student,ˈs t j uː d n̩ t
+study,ˈs t ʌ d i
+stupid,ˈs t j uː p ɪ d
+subject,ˈs ʌ b dʒ ɪ k t
+substance,ˈs ʌ b s t ə n s
+such,s ʌ tʃ
+sudden,ˈs ʌ d n̩
+sugar,ˈʃ ʊ ɡ ə
+suggest,s ə ˈdʒ ɛ s t
+suit,s uː t
+summer,ˈs ʌ m ə
+sun,s ʌ n
+supply,s ə ˈp l aɪ
+support,s ə ˈp ɔː t
+suppose,s ə ˈp oʊ z
+sure,ʃ ʊə
+surface,ˈs ɜː f ɪ s
+surprise,s ə ˈp r aɪ z
+sweet,s w iː t
+swim,s w ɪ m
+swing,s w ɪ ŋ
+syllable,ˈs ɪ l ə b l̩
+symbol,ˈs ɪ m b l̩
+system,ˈs ɪ s t ə m
+table,ˈt eɪ b l̩
+tail,t eɪ l
+take,t eɪ k
+talk,t ɔː k
+tall,t ɔː l
+tape,t eɪ p
+taste,t eɪ s t
+tax,t æ k s
+tea,t iː
+teach,t iː tʃ
+team,t iː m
+tear,t ɪə
+telephone,ˈt ɛ l ə f oʊ n
+television,ˈt ɛ l ɪ v ɪ ʒ n̩
+tell,t ɛ l
+temperature,ˈt ɛ m p r ə tʃ ə
+ten,t ɛ n
+tend,t ɛ n d
+tent,t ɛ n t
+term,t ɜː m
+terrible,ˈt ɛ r ə b l̩
+test,t ɛ s t
+than,ð æ n
+thank,θ æ ŋ k
+that,ð æ t
+the,ð ə
+theater,ˈθ ɪə t ə
+their,ð eə
+them,ð ɛ m
+themselves,ð ɛ m ˈs ɛ l v z
+then,ð ɛ n
+there,ð eə
+therefore,ˈð eə f ɔː
+these,ð iː z
+they,ð eɪ
+thick,θ ɪ k
+thin,θ ɪ n
+thing,θ ɪ ŋ
+think,θ ɪ ŋ k
+third,θ ɜː d
+this,ð ɪ s
+those,ð oʊ z
+though,ð oʊ
+thought,θ ɔː t
+thousand,ˈθ aʊ z n̩ d
+thread,θ r ɛ d
+three,θ r iː
+throat,θ r oʊ t
+through,θ r uː
+throw,θ r oʊ
+thus,ð ʌ s
+ticket,ˈt ɪ k ɪ t
+tide,t aɪ d
+tie,t aɪ
+tight,t aɪ t
+till,t ɪ l
+time,t aɪ m
+tin,t ɪ n
+tiny,ˈt aɪ n i
+tip,t ɪ p
+tire,t aɪə
+title,ˈt aɪ t l̩
+to,t uː
+tobacco,t ə ˈb æ k oʊ
+today,t ə ˈd eɪ
+toe,t oʊ
+together,t ə ˈɡ ɛ ð ə
+tomorrow,t ə ˈm ɒ r oʊ
+tongue,t ʌ ŋ
+tonight,t ə ˈn aɪ t
+too,t uː
+tool,t uː l
+tooth,t uː θ
+top,t ɒ p
+total,ˈt oʊ t l̩
+touch,t ʌ tʃ
+toward,t ə ˈw ɔː d
+tower,ˈt aʊə
+town,t aʊ n
+toy,t ɔɪ
+track,t r æ k
+trade,t r eɪ d
+traffic,ˈt r æ f ɪ k
+train,t r eɪ n
+transport,t r æ n ˈs p ɔː t
+travel,ˈt r æ v l̩
+tree,t r iː
+triangle,ˈt r aɪ æ ŋ ɡ l̩
+trip,t r ɪ p
+trouble,ˈt r ʌ b l̩
+truck,t r ʌ k
+true,t r uː
+trust,t r ʌ s t
+truth,t r uː θ
+try,t r aɪ
+tube,t j uː b
+turn,t ɜː n
+twelve,t w ɛ l v
+twenty,ˈt w ɛ n t i
+twice,t w aɪ s
+two,t uː
+type,t aɪ p
+typical,ˈt ɪ p ɪ k l̩
+ugly,ˈʌ ɡ l i
+umbrella,ʌ m ˈb r ɛ l ə
+uncle,ˈʌ ŋ k l̩
+under,ˈʌ n d ə
+understand,ˌʌ n d ə ˈs t æ n d
+unit,ˈj uː n ɪ t
+universe,ˈj uː n ɪ v ɜː s
+university,ˌj uː n ɪ ˈv ɜː s ɪ t i
+unless,ʌ n ˈl ɛ s
+until,ʌ n ˈt ɪ l
+up,ʌ p
+upon,ə ˈp ɒ n
+upper,ˈʌ p ə
+upset,ʌ p ˈs ɛ t
+upward,ˈʌ p w ə d
+us,ʌ s
+use,j uː z
+usual,ˈj uː ʒ ʊ ə l
+valley,ˈv æ l i
+value,ˈv æ l j uː
+various,ˈv eə r i ə s
+vegetable,ˈv ɛ dʒ t ə b l̩
+very,ˈv ɛ r i
+victory,ˈv ɪ k t ə r i
+view,v j uː
+village,ˈv ɪ l ɪ dʒ
+violence,ˈv aɪə l ə n s
+visit,ˈv ɪ z ɪ t
+voice,v ɔɪ s
+vowel,ˈv aʊə l
+voyage,ˈv ɔɪ ɪ dʒ
+wait,w eɪ t
+walk,w ɔː k
+wall,w ɔː l
+want,w ɒ n t
+war,w ɔː
+warm,w ɔː m
+was,w ʌ z
+wash,w ɒ ʃ
+waste,w eɪ s t
+watch,w ɒ tʃ
+water,ˈw ɔː t ə
+wave,w eɪ v
+way,w eɪ
+we,w iː
+weak,w iː k
+wealth,w ɛ l θ
+weapon,ˈw ɛ p ə n
+wear,w eə
+weather,ˈw ɛ ð ə
+week,w iː k
+weight,w eɪ t
+welcome,ˈw ɛ l k ə m
+well,w ɛ l
+west,w ɛ s t
+wet,w ɛ t
+what,w ɒ t
+wheel,w iː l
+when,w ɛ n
+where,w eə
+whether,ˈw ɛ ð ə
+which,w ɪ tʃ
+while,w aɪ l
+whisper,ˈw ɪ s p ə
+whistle,ˈw ɪ s l̩
+white,w aɪ t
+who,h uː
+whole,h oʊ l
+why,w aɪ
+wide,w aɪ d
+wife,w aɪ f
+wild,w aɪ l d
+will,w ɪ l
+win,w ɪ n
+wind,w ɪ n d
+window,ˈw ɪ n d oʊ
+wine,w aɪ n
+wing,w ɪ ŋ
+winter,ˈw ɪ n t ə
+wire,w aɪə
+wise,w aɪ z
+wish,w ɪ ʃ
+with,w ɪ ð
+within,w ɪ ˈð ɪ n
+without,w ɪ ˈð aʊ t
+woman,ˈw ʊ m ə n
+wonder,ˈw ʌ n d ə
+wonderful,ˈw ʌ n d ə f ʊ l
+wood,w ʊ d
+wool,w ʊ l
+word,w ɜː d
+work,w ɜː k
+world,w ɜː l d
+worry,ˈw ʌ r i
+worse,w ɜː s
+worth,w ɜː θ
+would,w ʊ d
+write,r aɪ t
+wrong,r ɒ ŋ
+yard,j ɑː d
+year,j ɪə
+yellow,ˈj ɛ l oʊ
+yes,j ɛ s
+yesterday,ˈj ɛ s t ə d eɪ
+yet,j ɛ t
+you,j uː
+young,j ʌ ŋ
+your,j ɔː
+yourself,j ɔː ˈs ɛ l f
+zero,ˈz ɪə r oʊ
+zoo,z uː"an,æ n"
+"and,æ n d"
+"angry,?æ ? ? r i"
+"animal,?æ n ? m l?"
+"another,? ?n ? ð ?"
 "answer,??? n s ?"
 "any,?? n i"
 "anybody,?? n i ?b ? d i"
@@ -46,7 +1256,7 @@
 "anywhere,?? n i w e?"
 "apartment,? ?p ?? t m ? n t"
 "appear,? ?p ??"
-"apple,?� p l?"
+"apple,?æ p l?"
 "are,??"
 "area,?e? r i ?"
 "arm,?? m"
@@ -56,10 +1266,10 @@
 "art,?? t"
 "article,??? t ? k l?"
 "artist,??? t ? s t"
-"as,� z"
+"as,æ z"
 "ask,?? s k"
-"at,� t"
-"attack,? ?t � k"
+"at,æ t"
+"attack,? ?t æ k"
 "attention,? ?t ? n ? n?"
 "aunt,?? n t"
 "author,??? ? ?"
@@ -68,12 +1278,12 @@
 "away,? ?w e?"
 "awful,??? f l?"
 "baby,?b e? b i"
-"back,b � k"
-"bad,b � d"
-"bag,b � ?"
+"back,b æ k"
+"bad,b æ d"
+"bag,b æ ?"
 "ball,b ?? l"
 "banana,b ? ?n ?? n ?"
-"bank,b � ? k"
+"bank,b æ ? k"
 "bath,b ?? ?"
 "bathroom,?b ?? ? r ? m"
 "be,b i?"
@@ -100,7 +1310,7 @@
 "bird,b ?? d"
 "birthday,?b ?? ? d e?"
 "bit,b ? t"
-"black,b l � k"
+"black,b l æ k"
 "blood,b l ? d"
 "blue,b l u?"
 "boat,b o? t"
@@ -114,7 +1324,7 @@
 "break,b r e? k"
 "breakfast,?b r ? k f ? s t"
 "bring,b r ? ?"
-"brother,?b r ? � ?"
+"brother,?b r ? ð ?"
 "brown,b r a? n"
 "build,b ? l d"
 "building,?b ? l d ? ?"
@@ -126,15 +1336,15 @@
 "by,b a?"
 "cake,k e? k"
 "call,k ?? l"
-"camera,?k � m r ?"
-"can,k � n"
+"camera,?k æ m r ?"
+"can,k æ n"
 "car,k ??"
 "card,k ?? d"
 "care,k e?"
 "careful,?k e? f ? l"
-"carry,?k � r i"
-"cat,k � t"
-"catch,k � t?"
+"carry,?k æ r i"
+"cat,k æ t"
+"catch,k æ t?"
 "cellphone,?s ? l f o? n"
 "center,?s ? n t ?"
 "chair,t? e?"
@@ -152,7 +1362,7 @@
 "clear,k l ??"
 "clock,k l ? k"
 "close,k l o? z"
-"clothes,k l o? � z"
+"clothes,k l o? ð z"
 "cloud,k l a? d"
 "coat,k o? t"
 "coffee,?k ? f i"
@@ -186,7 +1396,7 @@
 "cry,k r a?"
 "cup,k ? p"
 "cut,k ? t"
-"dad,d � d"
+"dad,d æ d"
 "dance,d ?? n s"
 "danger,?d e? n d? ?"
 "dark,d ?? k"
@@ -240,7 +1450,7 @@
 "effect,? ?f ? k t"
 "egg,? ?"
 "eight,e? t"
-"either,?a? � ?"
+"either,?a? ð ?"
 "elder,?? l d ?"
 "electric,? ?l ? k t r ? k"
 "else,? l s"
@@ -267,8 +1477,8 @@
 "everyone,?? v r i w ? n"
 "everything,?? v r i ? ? ?"
 "everywhere,?? v r i w e?"
-"exact,? ? ?z � k t"
-"examine,? ? ?z � m ? n"
+"exact,? ? ?z æ k t"
+"examine,? ? ?z æ m ? n"
 "example,? ? ?z ?? m p l?"
 "excellent,?? k s ? l ? n t"
 "except,? k ?s ? p t"
@@ -283,18 +1493,18 @@
 "extra,?? k s t r ?"
 "eye,a?"
 "face,f e? s"
-"fact,f � k t"
-"factory,?f � k t r i"
+"fact,f æ k t"
+"factory,?f æ k t r i"
 "fail,f e? l"
 "fair,f e?"
 "fall,f ?? l"
-"family,?f � m ? l i"
+"family,?f æ m ? l i"
 "famous,?f e? m ? s"
 "far,f ??"
 "farm,f ?? m"
 "fast,f ?? s t"
-"fat,f � t"
-"father,?f ?? � ?"
+"fat,f æ t"
+"father,?f ?? ð ?"
 "fault,f ?? l t"
 "fear,f ??"
 "feed,f i? d"
@@ -319,8 +1529,8 @@
 "fit,f ? t"
 "five,f a? v"
 "fix,f ? k s"
-"flag,f l � ?"
-"flat,f l � t"
+"flag,f l æ ?"
+"flat,f l æ t"
 "flight,f l a? t"
 "floor,f l ??"
 "flower,?f l a? ?"
@@ -350,14 +1560,14 @@
 "future,?f j u? t? ?"
 "game,? e? m"
 "garden,?? ?? d n?"
-"gas,? � s"
-"gather,?? � � ?"
+"gas,? æ s"
+"gather,?? æ ð ?"
 "general,?d? ? n r ? l"
 "gentle,?d? ? n t l?"
 "get,? ? t"
 "girl,? ?? l"
 "give,? ? v"
-"glad,? l � d"
+"glad,? l æ d"
 "glass,? l ?? s"
 "go,? o?"
 "god,? ? d"
@@ -379,13 +1589,13 @@
 "gun,? ? n"
 "hair,h e?"
 "half,h ?? f"
-"hand,h � n d"
-"happen,?h � p ? n"
-"happy,?h � p i"
+"hand,h æ n d"
+"happen,?h æ p ? n"
+"happy,?h æ p i"
 "hard,h ?? d"
 "hardly,?h ?? d l i"
-"hat,h � t"
-"have,h � v"
+"hat,h æ t"
+"have,h æ v"
 "he,h i?"
 "head,h ? d"
 "health,h ? l ?"
@@ -452,7 +1662,7 @@
 "it,? t"
 "its,? t s"
 "itself,? t ?s ? l f"
-"jacket,?d? � k ? t"
+"jacket,?d? æ k ? t"
 "job,d? ? b"
 "join,d? ?? n"
 "joke,d? o? k"
@@ -474,11 +1684,11 @@
 "know,n o?"
 "knowledge,?n ? l ? d?"
 "labor,?l e? b ?"
-"lack,l � k"
+"lack,l æ k"
 "lady,?l e? d i"
 "lake,l e? k"
-"land,l � n d"
-"language,?l � ? ? w ? d?"
+"land,l æ n d"
+"language,?l æ ? ? w ? d?"
 "large,l ?? d?"
 "last,l ?? s t"
 "late,l e? t"
@@ -529,23 +1739,23 @@
 "luck,l ? k"
 "lunch,l ? n t?"
 "machine,m ? ?? i? n"
-"mad,m � d"
+"mad,m æ d"
 "main,m e? n"
 "major,?m e? d? ?"
 "make,m e? k"
-"man,m � n"
-"manage,?m � n ? d?"
+"man,m æ n"
+"manage,?m æ n ? d?"
 "many,?m ? n i"
-"map,m � p"
+"map,m æ p"
 "march,m ?? t?"
 "mark,m ?? k"
 "market,?m ?? k ? t"
-"marry,?m � r i"
-"mass,m � s"
+"marry,?m æ r i"
+"mass,m æ s"
 "master,?m ?? s t ?"
-"match,m � t?"
+"match,m æ t?"
 "material,m ? ?t ?? r i ? l"
-"matter,?m � t ?"
+"matter,?m æ t ?"
 "may,m e?"
 "me,m i?"
 "meal,m i? l"
@@ -581,7 +1791,7 @@
 "more,m ??"
 "morning,?m ?? n ? ?"
 "most,m o? s t"
-"mother,?m ? � ?"
+"mother,?m ? ð ?"
 "mountain,?m a? n t ? n"
 "mouth,m a? ?"
 "move,m u? v"
@@ -592,9 +1802,9 @@
 "myself,m a? ?s ? l f"
 "nail,n e? l"
 "name,n e? m"
-"narrow,?n � r o?"
+"narrow,?n æ r o?"
 "nation,?n e? ? n?"
-"natural,?n � t? r ? l"
+"natural,?n æ t? r ? l"
 "near,n ??"
 "nearly,?n ?? l i"
 "necessary,?n ? s ? s ? r i"
@@ -602,7 +1812,7 @@
 "need,n i? d"
 "needle,?n i? d l?"
 "neighbor,?n e? b ?"
-"neither,?n a? � ?"
+"neither,?n a? ð ?"
 "nerve,n ?? v"
 "nest,n ? s t"
 "net,n ? t"
@@ -652,7 +1862,7 @@
 "order,??? d ?"
 "organ,??? ? ? n"
 "original,? ?r ? d? ? n l?"
-"other,?? � ?"
+"other,?? ð ?"
 "our,a??"
 "out,a? t"
 "outside,a? t ?s a? d"
@@ -664,7 +1874,7 @@
 "paint,p e? n t"
 "pair,p e?"
 "paper,?p e? p ?"
-"paragraph,?p � r ? ? r ?? f"
+"paragraph,?p æ r ? ? r ?? f"
 "parent,?p e? r ? n t"
 "park,p ?? k"
 "part,p ?? t"
@@ -674,21 +1884,21 @@
 "past,p ?? s t"
 "path,p ?? ?"
 "patient,?p e? ? n? t"
-"pattern,?p � t n?"
+"pattern,?p æ t n?"
 "pay,p e?"
 "peace,p i? s"
 "pen,p ? n"
 "pencil,?p ? n s l?"
 "people,?p i? p l?"
 "perfect,?p ?? f ? k t"
-"perhaps,p ? ?h � p s"
+"perhaps,p ? ?h æ p s"
 "period,?p ?? r i ? d"
 "person,?p ?? s n?"
 "phone,f o? n"
 "photo,?f o? t o?"
 "phrase,f r e? z"
 "physical,?f ? z ? k l?"
-"piano,p i ?� n o?"
+"piano,p i ?æ n o?"
 "pick,p ? k"
 "picture,?p ? k t? ?"
 "piece,p i? s"
@@ -700,7 +1910,7 @@
 "pipe,p a? p"
 "place,p l e? s"
 "plain,p l e? n"
-"plan,p l � n"
+"plan,p l æ n"
 "plane,p l e? n"
 "plant,p l ?? n t"
 "plate,p l e? t"
@@ -726,7 +1936,7 @@
 "potato,p ? ?t e? t o?"
 "pound,p a? n d"
 "power,?p a??"
-"practice,?p r � k t ? s"
+"practice,?p r æ k t ? s"
 "prepare,p r ? ?p e?"
 "present,?p r ? z n? t"
 "press,p r ? s"
@@ -743,7 +1953,7 @@
 "product,?p r ? d ? k t"
 "profession,p r ? ?f ? ? n?"
 "profit,?p r ? f ? t"
-"program,?p r o? ? r � m"
+"program,?p r o? ? r æ m"
 "progress,?p r o? ? r ? s"
 "promise,?p r ? m ? s"
 "proper,?p r ? p ?"
@@ -774,10 +1984,10 @@
 "rain,r e? n"
 "raise,r e? z"
 "range,r e? n d?"
-"rank,r � ? k"
-"rapid,?r � p ? d"
+"rank,r æ ? k"
+"rapid,?r æ p ? d"
 "rate,r e? t"
-"rather,?r ?? � ?"
+"rather,?r ?? ð ?"
 "raw,r ??"
 "reach,r i? t?"
 "read,r i? d"
@@ -837,13 +2047,13 @@
 "ruler,?r u? l ?"
 "run,r ? n"
 "rush,r ? ?"
-"sad,s � d"
+"sad,s æ d"
 "safe,s e? f"
 "sail,s e? l"
 "salt,s ?? l t"
 "same,s e? m"
-"sand,s � n d"
-"satellite,?s � t ? l a? t"
+"sand,s æ n d"
+"satellite,?s æ t ? l a? t"
 "save,s e? v"
 "say,s e?"
 "scale,s k e? l"
@@ -880,10 +2090,10 @@
 "several,?s ? v r ? l"
 "sew,s o?"
 "shade,? e? d"
-"shadow,?? � d o?"
+"shadow,?? æ d o?"
 "shake,? e? k"
-"shall,? � l"
-"shallow,?? � l o?"
+"shall,? æ l"
+"shallow,?? æ l o?"
 "shape,? e? p"
 "share,? e?"
 "sharp,? ?? p"
@@ -940,7 +2150,7 @@
 "smell,s m ? l"
 "smile,s m a? l"
 "smoke,s m o? k"
-"smooth,s m u? �"
+"smooth,s m u? ð"
 "snake,s n e? k"
 "snow,s n o?"
 "so,s o?"
@@ -975,9 +2185,9 @@
 "spring,s p r ? ?"
 "square,s k w e?"
 "stair,s t e?"
-"stamp,s t � m p"
-"stand,s t � n d"
-"standard,?s t � n d ? d"
+"stamp,s t æ m p"
+"stand,s t æ n d"
+"standard,?s t æ n d ? d"
 "star,s t ??"
 "start,s t ?? t"
 "state,s t e? t"
@@ -1038,7 +2248,7 @@
 "tall,t ?? l"
 "tape,t e? p"
 "taste,t e? s t"
-"tax,t � k s"
+"tax,t æ k s"
 "tea,t i?"
 "teach,t i? t?"
 "team,t i? m"
@@ -1053,27 +2263,27 @@
 "term,t ?? m"
 "terrible,?t ? r ? b l?"
 "test,t ? s t"
-"than,� � n"
-"thank,? � ? k"
-"that,� � t"
-"the,� ?"
+"than,ð æ n"
+"thank,? æ ? k"
+"that,ð æ t"
+"the,ð ?"
 "theater,?? ?? t ?"
-"their,� e?"
-"them,� ? m"
-"themselves,� ? m ?s ? l v z"
-"then,� ? n"
-"there,� e?"
-"therefore,?� e? f ??"
-"these,� i? z"
-"they,� e?"
+"their,ð e?"
+"them,ð ? m"
+"themselves,ð ? m ?s ? l v z"
+"then,ð ? n"
+"there,ð e?"
+"therefore,?ð e? f ??"
+"these,ð i? z"
+"they,ð e?"
 "thick,? ? k"
 "thin,? ? n"
 "thing,? ? ?"
 "think,? ? ? k"
 "third,? ?? d"
-"this,� ? s"
-"those,� o? z"
-"though,� o?"
+"this,ð ? s"
+"those,ð o? z"
+"though,ð o?"
 "thought,? ?? t"
 "thousand,?? a? z n? d"
 "thread,? r ? d"
@@ -1081,7 +2291,7 @@
 "throat,? r o? t"
 "through,? r u?"
 "throw,? r o?"
-"thus,� ? s"
+"thus,ð ? s"
 "ticket,?t ? k ? t"
 "tide,t a? d"
 "tie,t a?"
@@ -1094,10 +2304,10 @@
 "tire,t a??"
 "title,?t a? t l?"
 "to,t u?"
-"tobacco,t ? ?b � k o?"
+"tobacco,t ? ?b æ k o?"
 "today,t ? ?d e?"
 "toe,t o?"
-"together,t ? ?? ? � ?"
+"together,t ? ?? ? ð ?"
 "tomorrow,t ? ?m ? r o?"
 "tongue,t ? ?"
 "tonight,t ? ?n a? t"
@@ -1111,14 +2321,14 @@
 "tower,?t a??"
 "town,t a? n"
 "toy,t ??"
-"track,t r � k"
+"track,t r æ k"
 "trade,t r e? d"
-"traffic,?t r � f ? k"
+"traffic,?t r æ f ? k"
 "train,t r e? n"
-"transport,t r � n ?s p ?? t"
-"travel,?t r � v l?"
+"transport,t r æ n ?s p ?? t"
+"travel,?t r æ v l?"
 "tree,t r i?"
-"triangle,?t r a? � ? ? l?"
+"triangle,?t r a? æ ? ? l?"
 "trip,t r ? p"
 "trouble,?t r ? b l?"
 "truck,t r ? k"
@@ -1138,7 +2348,7 @@
 "umbrella,? m ?b r ? l ?"
 "uncle,?? ? k l?"
 "under,?? n d ?"
-"understand,?? n d ? ?s t � n d"
+"understand,?? n d ? ?s t æ n d"
 "unit,?j u? n ? t"
 "universe,?j u? n ? v ?? s"
 "university,?j u? n ? ?v ?? s ? t i"
@@ -1152,8 +2362,8 @@
 "us,? s"
 "use,j u? z"
 "usual,?j u? ? ? ? l"
-"valley,?v � l i"
-"value,?v � l j u?"
+"valley,?v æ l i"
+"value,?v æ l j u?"
 "various,?v e? r i ? s"
 "vegetable,?v ? d? t ? b l?"
 "very,?v ? r i"
@@ -1183,7 +2393,7 @@
 "wealth,w ? l ?"
 "weapon,?w ? p ? n"
 "wear,w e?"
-"weather,?w ? � ?"
+"weather,?w ? ð ?"
 "week,w i? k"
 "weight,w e? t"
 "welcome,?w ? l k ? m"
@@ -1194,7 +2404,7 @@
 "wheel,w i? l"
 "when,w ? n"
 "where,w e?"
-"whether,?w ? � ?"
+"whether,?w ? ð ?"
 "which,w ? t?"
 "while,w a? l"
 "whisper,?w ? s p ?"
@@ -1216,9 +2426,9 @@
 "wire,w a??"
 "wise,w a? z"
 "wish,w ? ?"
-"with,w ? �"
-"within,w ? ?� ? n"
-"without,w ? ?� a? t"
+"with,w ? ð"
+"within,w ? ?ð ? n"
+"without,w ? ?ð a? t"
 "woman,?w ? m ? n"
 "wonder,?w ? n d ?"
 "wonderful,?w ? n d ? f ? l"
@@ -1245,3 +2455,4 @@
 "yourself,j ?? ?s ? l f"
 "zero,?z ?? r o?"
 "zoo,z u?"
+
