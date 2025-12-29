@@ -4,8 +4,148 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>English Phoneme Pronunciation Practice</title>
+    <style>
+        .word-converter {
+            background: #f0f0f0;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .phoneme-breakdown {
+            background: white;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+        .phoneme-segment {
+            display: inline-block;
+            margin: 5px;
+            padding: 5px 10px;
+            background: #e3f2fd;
+            border-radius: 4px;
+        }
+        #wordInput {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+        .convert-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #2196f3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .convert-btn:hover {
+            background: #1976d2;
+        }
+        .status-message {
+            background: #4caf50;
+            color: white;
+            padding: 10px;
+            margin: 10px auto;
+            border-radius: 5px;
+            max-width: 400px;
+            display: none;
+        }
+        .status-message.error {
+            background: #f44336;
+        }
+        .status-message.warning {
+            background: #ff9800;
+        }
+.search-result-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.search-result-item:hover {
+    background: #e3f2fd;
+}
+
+.search-result-word {
+    font-weight: bold;
+    color: #2196f3;
+    font-size: 16px;
+    margin-bottom: 2px;
+}
+
+.search-result-phoneme {
+    color: #666;
+    font-size: 13px;
+    font-family: monospace;
+}
+
+.search-popup {
+    position: fixed;
+    background: white;
+    border: 2px solid #2196f3;
+    border-radius: 5px;
+    max-height: 300px;
+    overflow-y: auto;
+    width: 300px;
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.2);
+    z-index: 1000;
+    display: none;
+}
+
+.word-input-container {
+    position: relative;
+    display: inline-block;
+    width: 300px; /* Match input width */
+}
+
+
+    </style>
     <script>
+        // Default phoneme dictionary (fallback)
+        const defaultPhonemeDict = {
+            "hello": "h ɛ ˈl oʊ",
+            "world": "ˈw ɜː l d",
+            "cat": "k æ t",
+            "dog": "d ɒ g",
+            "house": "h aʊ s",
+            "water": "ˈw ɔː t ə",
+            "computer": "k ə m ˈp j uː t ə",
+            "phone": "f oʊ n",
+            "book": "b ʊ k",
+            "apple": "ˈæ p l̩",
+            "banana": "b ə ˈn ɑː n ə",
+            "music": "ˈm j uː z ɪ k",
+            "friend": "f r ɛ n d",
+            "school": "s k uː l",
+            "teacher": "ˈt iː tʃ ə",
+            "student": "ˈs t uː d ə n t",
+            "mother": "ˈm ʌ ð ə",
+            "father": "ˈf ɑː ð ə",
+            "brother": "ˈb r ʌ ð ə",
+            "sister": "ˈs ɪ s t ə",
+            "beautiful": "ˈb j uː t ɪ f ʊ l",
+            "wonderful": "ˈw ʌ n d ə f ʊ l",
+            "morning": "ˈm ɔː n ɪ ŋ",
+            "evening": "ˈiː v n ɪ ŋ",
+            "night": "n aɪ t",
+            "today": "t ə ˈd eɪ",
+            "tomorrow": "t ə ˈm ɒ r oʊ",
+            "yesterday": "ˈj ɛ s t ə d eɪ"
+        };
+
+        let phonemeDict = {...defaultPhonemeDict};
+        let csvLoaded = false;
+
         const phonemeCategories = {
+            "Words": [],
             "Vowels": [
                 {symbol: "iː", example: "beat", ipa: "iː"},
                 {symbol: "ɪ", example: "bit", ipa: "ɪ"},
@@ -64,7 +204,185 @@
 
         window.onload = function() {
             buildTable();
+            loadPhonemeCSV();
         };
+
+        async function loadPhonemeCSV() {
+            try {
+                const response = await fetch('phonemeDict.csv');
+                const csvText = await response.text();
+                
+                const lines = csvText.trim().split('\n');
+                const newDict = {};
+                
+                // Skip header row if exists
+                const startIndex = lines[0].toLowerCase().includes('word') ? 1 : 0;
+                
+                for (let i = startIndex; i < lines.length; i++) {
+                    const line = lines[i].trim();
+                    if (!line) continue;
+                    
+                    // Split by comma, handling quoted values
+                    const match = line.match(/^"?([^",]+)"?,\s*"?([^"]+)"?$/);
+                    if (match) {
+                        const word = match[1].trim().toLowerCase();
+                        const phonemes = match[2].trim();
+                        newDict[word] = phonemes;
+                    }
+                }
+                
+                if (Object.keys(newDict).length > 0) {
+                    phonemeDict = newDict;
+                    csvLoaded = true;
+                    showStatus('Loaded ' + Object.keys(phonemeDict).length + ' words from CSV');
+                    document.getElementById('dictStatus').textContent = 'Dictionary: CSV (' + Object.keys(phonemeDict).length + ' words)';
+                } else {
+                    throw new Error('No valid entries in CSV');
+                }
+            } catch (err) {
+                console.log('CSV load failed, using default dictionary:', err.message);
+                phonemeDict = {...defaultPhonemeDict};
+                csvLoaded = false;
+                document.getElementById('dictStatus').textContent = 'Dictionary: Default (' + Object.keys(phonemeDict).length + ' words)';
+            }
+        }
+
+        function showStatus(message, type = 'success') {
+            const statusDiv = document.getElementById('statusMessage');
+            statusDiv.textContent = message;
+            statusDiv.className = 'status-message ' + (type !== 'success' ? type : '');
+            statusDiv.style.display = 'block';
+            
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 3000);
+        }
+
+        function handleWordInput(event) {
+    const input = event.target.value.toLowerCase().trim();
+    const popup = document.getElementById('searchPopup');
+    
+    if (input.length < 3) {
+        popup.style.display = 'none';
+        return;
+    }
+    
+    // Get individual characters from input
+    const inputChars = input.split('');
+    
+    // Search for matching words
+    const matches = [];
+    for (let word in phonemeDict) {
+        // Check if word contains all input characters
+        const containsAllChars = inputChars.every(char => word.includes(char));
+        
+        if (containsAllChars) {
+            matches.push({word: word, phonemes: phonemeDict[word]});
+        }
+    }
+    
+    if (matches.length > 0) {
+        // Sort matches by relevance (words starting with input first, then others)
+        matches.sort((a, b) => {
+            const aStartsWith = a.word.startsWith(input) ? 1 : 0;
+            const bStartsWith = b.word.startsWith(input) ? 1 : 0;
+            
+            if (aStartsWith !== bStartsWith) {
+                return bStartsWith - aStartsWith;
+            }
+            
+            // Then sort by word length (shorter words first)
+            if (a.word.length !== b.word.length) {
+                return a.word.length - b.word.length;
+            }
+            
+            // Finally alphabetical
+            return a.word.localeCompare(b.word);
+        });
+        
+        let html = '';
+        matches.slice(0, 20).forEach(match => {
+            html += '<div class="search-result-item" onclick="selectWord(\'' + match.word + '\')">';
+            html += '<div class="search-result-word">' + match.word + '</div>';
+            html += '<div class="search-result-phoneme">/' + match.phonemes.replace(/ /g, '') + '/</div>';
+            html += '</div>';
+        });
+        popup.innerHTML = html;
+        popup.style.display = 'block';
+        
+        // Position popup below input, aligned with input width
+        const inputRect = event.target.getBoundingClientRect();
+        popup.style.left = (inputRect.left + window.scrollX) + 'px';
+        popup.style.top = (inputRect.bottom + window.scrollY) + 'px';
+        popup.style.width = (inputRect.width) + 'px';
+    } else {
+        popup.style.display = 'none';
+    }
+}
+
+
+
+
+        function selectWord(word) {
+            document.getElementById('wordInput').value = word;
+            document.getElementById('searchPopup').style.display = 'none';
+            convertWord();
+        }
+
+        // Hide popup when clicking outside
+        document.addEventListener('click', function(event) {
+            const popup = document.getElementById('searchPopup');
+            const input = document.getElementById('wordInput');
+            if (event.target !== input && event.target !== popup && !popup.contains(event.target)) {
+                popup.style.display = 'none';
+            }
+        });
+
+        function convertWord() {
+            const word = document.getElementById('wordInput').value.toLowerCase().trim();
+            const resultDiv = document.getElementById('conversionResult');
+            
+            if (!word) {
+                resultDiv.innerHTML = '<p style="color: red;">Please enter a word</p>';
+                return;
+            }
+
+            const phonemes = phonemeDict[word];
+            
+            if (phonemes) {
+                const segments = phonemes.split(' ');
+                let html = '<div class="phoneme-breakdown"><strong>/' + phonemes.replace(/ /g, '') + '/</strong><br><br>';
+                
+                segments.forEach(seg => {
+                    html += '<span class="phoneme-segment">' + seg + '</span>';
+                });
+                
+                html += '</div>';
+                html += '<p style="margin-top: 15px;">Word added to Words table below. You can now record it.</p>';
+                
+                resultDiv.innerHTML = html;
+                
+                // Add word to Words category if not already there
+                const wordEntry = {
+                    symbol: phonemes.replace(/ /g, ''),
+                    example: word,
+                    ipa: phonemes.replace(/ /g, ''),
+                    isWord: true
+                };
+                
+                // Check if word already exists
+                const existingIndex = phonemeCategories.Words.findIndex(w => w.example === word);
+                if (existingIndex === -1) {
+                    phonemeCategories.Words.push(wordEntry);
+                    buildTable();
+                    showStatus('Word "' + word + '" added to Words table');
+                } else {
+                    showStatus('Word "' + word + '" already in table', 'warning');
+                }
+            } else {
+                resultDiv.innerHTML = '<p style="color: orange;">Word "' + word + '" not found in dictionary.<br>Currently loaded: ' + Object.keys(phonemeDict).length + ' words from ' + (csvLoaded ? 'CSV file' : 'default dictionary') + '</p>';
+            }
+        }
 
         function blobToBase64(blob) {
             return new Promise((resolve) => {
@@ -76,12 +394,13 @@
             });
         }
 
-        function isValidRecording(data) {
-            // Check if it's the new format (object with base64)
+        function isValidRecording(data, expectedExample) {
             if (typeof data === 'object' && data.base64 && data.mime) {
+                if (expectedExample && data.exampleWord) {
+                    return data.exampleWord === expectedExample;
+                }
                 return true;
             }
-            // Old blob: URLs are invalid
             if (typeof data === 'string' && data.startsWith('blob:')) {
                 return false;
             }
@@ -107,7 +426,7 @@
                 table.appendChild(thead);
 
                 phonemeCategories[category].forEach(function(phoneme) {
-                    const id = phoneme.symbol.replace(/[ːˈˌ]/g, '');
+                    const id = phoneme.example + '-' + phoneme.symbol.replace(/[ːˈˆˌ ]/g, '');
                     const row = document.createElement('tr');
 
                     const cell1 = document.createElement('td');
@@ -121,7 +440,10 @@
                     const cell3 = document.createElement('td');
                     cell3.align = 'center';
                     
-                    const hasValidRecording = recordings[id] && isValidRecording(recordings[id]);
+                    const hasValidRecording = recordings[id] && isValidRecording(recordings[id], phoneme.example);
+                    const hasMismatchedRecording = recordings[id] && 
+                                                   isValidRecording(recordings[id]) && 
+                                                   !isValidRecording(recordings[id], phoneme.example);
                     
                     if (hasValidRecording) {
                         const aud = document.createElement('audio');
@@ -137,6 +459,9 @@
                         } catch (e) {
                             cell3.innerHTML = '<span style="color: red;">Invalid recording</span>';
                         }
+                    } else if (hasMismatchedRecording) {
+                        cell3.innerHTML = '<span style="color: red;">⚠️ Wrong example word</span><br>' +
+                                        '<small>(recorded: "' + recordings[id].exampleWord + '")</small>';
                     } else if (recordings[id]) {
                         cell3.innerHTML = '<span style="color: orange;">⚠️ Old format (lost)</span>';
                     } else {
@@ -148,7 +473,7 @@
                     
                     const recBtn = document.createElement('button');
                     recBtn.textContent = recordingPhoneme === id ? 'Stop' : 'Record';
-                    recBtn.onclick = function() { toggleRecording(id); };
+                    recBtn.onclick = function() { toggleRecording(id, phoneme.example); };
                     cell4.appendChild(recBtn);
 
                     if (hasValidRecording) {
@@ -160,14 +485,13 @@
 
                         const delBtn = document.createElement('button');
                         delBtn.textContent = 'Delete';
-                        delBtn.onclick = function() { deleteAudio(id); };
+                        delBtn.onclick = function() { deleteAudio(id, phoneme.isWord); };
                         cell4.appendChild(document.createTextNode(' '));
                         cell4.appendChild(delBtn);
                     } else if (recordings[id]) {
-                        // Allow deleting invalid entries
                         const delBtn = document.createElement('button');
                         delBtn.textContent = 'Remove';
-                        delBtn.onclick = function() { deleteAudio(id); };
+                        delBtn.onclick = function() { deleteAudio(id, phoneme.isWord); };
                         cell4.appendChild(document.createTextNode(' '));
                         cell4.appendChild(delBtn);
                     }
@@ -185,15 +509,15 @@
             }
         }
 
-        function toggleRecording(id) {
+        function toggleRecording(id, exampleWord) {
             if (recordingPhoneme === id && mediaRecorder && mediaRecorder.state === 'recording') {
                 stopRecording();
             } else {
-                startRecording(id);
+                startRecording(id, exampleWord);
             }
         }
 
-        function startRecording(id) {
+        function startRecording(id, exampleWord) {
             recordingPhoneme = id;
             audioChunks = [];
 
@@ -212,7 +536,8 @@
 
                         recordings[id] = {
                             mime: blob.type,
-                            base64: base64
+                            base64: base64,
+                            exampleWord: exampleWord
                         };
                         
                         recordingPhoneme = null;
@@ -224,6 +549,7 @@
                             audioStream = null;
                         }
                         
+                        showStatus('Recording saved for "' + exampleWord + '"');
                         buildTable();
                     };
 
@@ -231,7 +557,7 @@
                     buildTable();
                 })
                 .catch(function(err) {
-                    alert('Microphone error: ' + err.message);
+                    showStatus('Microphone error: ' + err.message, 'error');
                     recordingPhoneme = null;
                 });
         }
@@ -249,27 +575,40 @@
             }
         }
 
-        function deleteAudio(id) {
-            if (confirm('Delete this recording?')) {
-                delete recordings[id];
-                buildTable();
+        function deleteAudio(id, isWord) {
+            delete recordings[id];
+            
+            if (isWord) {
+                // Remove from Words category
+                const word = id.split('-')[0];
+                phonemeCategories.Words = phonemeCategories.Words.filter(w => w.example !== word);
             }
+            
+            buildTable();
         }
 
         function exportAll() {
-            // Only export valid recordings
             const validRecordings = {};
+            let exported = 0;
             let skipped = 0;
             
             for (let key in recordings) {
-                if (isValidRecording(recordings[key])) {
+                const expectedExample = key.split('-')[0];
+                
+                if (isValidRecording(recordings[key], expectedExample)) {
                     validRecordings[key] = recordings[key];
+                    exported++;
                 } else {
                     skipped++;
                 }
             }
             
-            const json = JSON.stringify(validRecordings, null, 2);
+            const exportData = {
+                recordings: validRecordings,
+                words: phonemeCategories.Words
+            };
+            
+            const json = JSON.stringify(exportData, null, 2);
             const uri = 'data:application/json;charset=utf-8,' + encodeURIComponent(json);
             const link = document.createElement('a');
             link.href = uri;
@@ -277,8 +616,9 @@
             link.click();
             
             if (skipped > 0) {
-                alert('Exported ' + Object.keys(validRecordings).length + ' valid recordings.\n' + 
-                      skipped + ' invalid/old recordings were skipped.');
+                showStatus('Exported ' + exported + ' recordings. ' + skipped + ' skipped.', 'warning');
+            } else {
+                showStatus('Exported ' + exported + ' recordings');
             }
         }
 
@@ -293,56 +633,62 @@
                     let validCount = 0;
                     let invalidCount = 0;
                     
-                    for (let key in imported) {
-                        if (isValidRecording(imported[key])) {
-                            recordings[key] = imported[key];
-                            validCount++;
-                        } else {
-                            // Keep invalid entries to show warning, but mark them
-                            recordings[key] = imported[key];
-                            invalidCount++;
+                    if (imported.recordings) {
+                        for (let key in imported.recordings) {
+                            const expectedExample = key.split('-')[0];
+                            
+                            if (isValidRecording(imported.recordings[key], expectedExample)) {
+                                recordings[key] = imported.recordings[key];
+                                validCount++;
+                            } else {
+                                recordings[key] = imported.recordings[key];
+                                invalidCount++;
+                            }
                         }
+                    }
+                    
+                    if (imported.words) {
+                        phonemeCategories.Words = imported.words;
                     }
                     
                     buildTable();
                     
                     if (invalidCount > 0) {
-                        alert('Import complete!\n\n' +
-                              '✓ Valid recordings: ' + validCount + '\n' +
-                              '⚠️ Invalid/lost recordings: ' + invalidCount + '\n\n' +
-                              'Invalid recordings show as "Old format (lost)" and cannot be played.\n' +
-                              'You will need to re-record these phonemes.');
+                        showStatus('Imported ' + validCount + ' valid, ' + invalidCount + ' invalid', 'warning');
                     } else {
-                        alert('Successfully imported ' + validCount + ' recordings!');
+                        showStatus('Import successful! ' + validCount + ' recordings loaded');
                     }
                 } catch (err) {
-                    alert('Import error: ' + err.message);
+                    showStatus('Import error: ' + err.message, 'error');
                 }
             };
             reader.readAsText(file);
             
-            // Reset file input
             evt.target.value = '';
         }
 
         function clearAll() {
             if (confirm('Clear ALL recordings? This cannot be undone.')) {
                 recordings = {};
+                phonemeCategories.Words = [];
                 buildTable();
+                showStatus('All recordings cleared', 'warning');
             }
         }
 
         function removeInvalid() {
-            if (confirm('Remove all invalid/lost recordings from the list?')) {
+            if (confirm('Remove all invalid/lost recordings and mismatched example words from the list?')) {
                 const validRecordings = {};
                 for (let key in recordings) {
-                    if (isValidRecording(recordings[key])) {
+                    const expectedExample = key.split('-')[0];
+                    
+                    if (isValidRecording(recordings[key], expectedExample)) {
                         validRecordings[key] = recordings[key];
                     }
                 }
                 recordings = validRecordings;
                 buildTable();
-                alert('Invalid recordings removed. You can now re-record those phonemes.');
+                showStatus('Invalid recordings removed');
             }
         }
     </script>
@@ -351,13 +697,24 @@
     <center>
         <h1>English Phoneme Pronunciation Practice</h1>
         
+        <div id="statusMessage" class="status-message"></div>
+        
+        <div class="word-converter">
+            <h2>🔤 Word to Phoneme Converter</h2>
+            <p>Type a word to see its phonemic breakdown and add it to the Words table</p>
+            <p style="font-size: 12px; color: #666;">Type at least 3 letters to see available words | <span id="dictStatus">Dictionary: Loading...</span></p>
+            <div class="word-input-container">
+                <input type="text" id="wordInput" placeholder="Enter a word (e.g., hello, computer)" 
+                       oninput="handleWordInput(event)" 
+                       onkeypress="if(event.key==='Enter') convertWord()">
+                <div id="searchPopup" class="search-popup"></div>
+            </div>
+            <button class="convert-btn" onclick="convertWord()">Convert & Add to Table</button>
+            <div id="conversionResult" style="margin-top: 20px;"></div>
+        </div>
+        
         <div>
             <h3>Recording Controls</h3>
-            <p>1. Click "Record" next to any phoneme<br>
-               2. Speak the phoneme clearly<br>
-               3. Click "Stop" when done<br>
-               4. Use "Play" to listen to your recording</p>
-            
             <button onclick="exportAll()">Export All Recordings</button>
             <button onclick="document.getElementById('importFile').click()">Import Recordings</button>
             <button onclick="clearAll()">Clear All Recordings</button>
@@ -374,22 +731,18 @@
         <hr>
         
         <div>
-            <h3>Tips for Recording</h3>
-            <p>Use a quiet room with minimal background noise<br>
-               Speak clearly and at a normal pace<br>
-               Keep microphone about 6 inches from your mouth<br>
-               Practice each phoneme multiple times</p>
+            <h3>How to Use</h3>
+            <p><strong>Step 1:</strong> Type at least 3 letters in the word converter to see available words<br>
+               <strong>Step 2:</strong> Select a word from the dropdown or type the full word<br>
+               <strong>Step 3:</strong> Click "Convert & Add to Table" to add it to the Words table<br>
+               <strong>Step 4:</strong> Click "Record" to record your pronunciation, then "Stop" when finished<br>
+               <strong>Step 5:</strong> Use "Play" to listen back to your recording</p>
             
-            <h3>About Invalid Recordings</h3>
-            <p><span style="color: orange;">⚠️ Recordings marked as "Old format (lost)"</span> are from an older version<br>
-               that only saved temporary links, not actual audio data.<br>
-               These recordings cannot be recovered - you'll need to re-record them.<br>
-               Use the "Clean Up Invalid Recordings" button to remove them from your list.</p>
-            
-            <h3>Note</h3>
-            <p>New recordings are stored as real audio data (Base64 format).<br>
-               Export your recordings to save them permanently and share them.<br>
-               Exported files will only contain valid recordings.</p>
+            <h3>Custom Word Dictionary</h3>
+            <p>Place a <strong>phonemeDict.csv</strong> file in the same directory with format:<br>
+               <code>word,phonemes</code><br>
+               Example: <code>hello,h ɛ ˈl oʊ</code><br>
+               If CSV is not found, the default dictionary will be used.</p>
         </div>
     </center>
 </body>
