@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Phoneme Pronunciation Practice</title>
+    <script>
+        // Phoneme categories
+        const phonemeCategories = {
+            "Vowels": [
+                {symbol: "iː", example: "beat", ipa: "iː"},
+                {symbol: "ɪ", example: "bit", ipa: "ɪ"},
+                {symbol: "e", example: "bet", ipa: "e"},
+                {symbol: "æ", example: "bat", ipa: "æ"},
+                {symbol: "ɑː", example: "bard", ipa: "ɑː"},
+                {symbol: "ɒ", example: "bot", ipa: "ɒ"},
+                {symbol: "ɔː", example: "bought", ipa: "ɔː"},
+                {symbol: "ʊ", example: "book", ipa: "ʊ"},
+                {symbol: "uː", example: "boot", ipa: "uː"},
+                {symbol: "ʌ", example: "but", ipa: "ʌ"},
+                {symbol: "ɜː", example: "bird", ipa: "ɜː"},
+                {symbol: "ə", example: "about", ipa: "ə"},
+                {symbol: "eɪ", example: "bait", ipa: "eɪ"},
+                {symbol: "aɪ", example: "bite", ipa: "aɪ"},
+                {symbol: "ɔɪ", example: "boy", ipa: "ɔɪ"},
+                {symbol: "aʊ", example: "bout", ipa: "aʊ"},
+                {symbol: "oʊ", example: "boat", ipa: "oʊ"},
+                {symbol: "ɪə", example: "beer", ipa: "ɪə"},
+                {symbol: "eə", example: "bear", ipa: "eə"},
+                {symbol: "ʊə", example: "boor", ipa: "ʊə"}
+            ],
+            "Consonants": [
+                {symbol: "p", example: "pat", ipa: "p"},
+                {symbol: "b", example: "bat", ipa: "b"},
+                {symbol: "t", example: "top", ipa: "t"},
+                {symbol: "d", example: "dog", ipa: "d"},
+                {symbol: "k", example: "cat", ipa: "k"},
+                {symbol: "g", example: "got", ipa: "g"},
+                {symbol: "f", example: "fat", ipa: "f"},
+                {symbol: "v", example: "vat", ipa: "v"},
+                {symbol: "θ", example: "thin", ipa: "θ"},
+                {symbol: "ð", example: "this", ipa: "ð"},
+                {symbol: "s", example: "sat", ipa: "s"},
+                {symbol: "z", example: "zip", ipa: "z"},
+                {symbol: "ʃ", example: "ship", ipa: "ʃ"},
+                {symbol: "ʒ", example: "measure", ipa: "ʒ"},
+                {symbol: "h", example: "hat", ipa: "h"},
+                {symbol: "m", example: "mat", ipa: "m"},
+                {symbol: "n", example: "nap", ipa: "n"},
+                {symbol: "ŋ", example: "sing", ipa: "ŋ"},
+                {symbol: "l", example: "let", ipa: "l"},
+                {symbol: "r", example: "rat", ipa: "r"},
+                {symbol: "j", example: "yes", ipa: "j"},
+                {symbol: "w", example: "wet", ipa: "w"},
+                {symbol: "tʃ", example: "chip", ipa: "tʃ"},
+                {symbol: "dʒ", example: "judge", ipa: "dʒ"}
+            ]
+        };
+
+        // Store recordings in localStorage
+        const recordings = JSON.parse(localStorage.getItem('phonemeRecordings') || '{}');
+        
+        // Audio recording variables
+        let mediaRecorder;
+        let audioChunks = [];
+        let currentRecordingPhoneme = null;
+        
+        window.onload = function() {
+            generatePhonemeTable();
+        };
+        
+        function generatePhonemeTable() {
+            const container = document.getElementById('phonemeContainer');
+            container.innerHTML = '';
+            
+            for (const category in phonemeCategories) {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.innerHTML = `<h2>${category}</h2>`;
+                
+                const table = document.createElement('table');
+                table.setAttribute('border', '1');
+                table.setAttribute('width', '100%');
+                
+                // Table header
+                const headerRow = document.createElement('tr');
+                headerRow.innerHTML = `
+                    <th width="20%">Phoneme</th>
+                    <th width="30%">Example Word</th>
+                    <th width="30%">Your Recording</th>
+                    <th width="20%">Actions</th>
+                `;
+                table.appendChild(headerRow);
+                
+                // Phoneme rows
+                phonemeCategories[category].forEach(phoneme => {
+                    const row = document.createElement('tr');
+                    const phonemeId = phoneme.symbol.replace(/[ːˈ]/g, '');
+                    
+                    // Check if recording exists
+                    const hasRecording = recordings[phonemeId];
+                    
+                    row.innerHTML = `
+                        <td align="center">
+                            <strong>/${phoneme.symbol}/</strong><br>
+                            [${phoneme.ipa}]
+                        </td>
+                        <td align="center">${phoneme.example}</td>
+                        <td align="center">
+                            ${hasRecording ? 
+                                `<audio id="audio-${phonemeId}" src="${recordings[phonemeId]}"></audio>
+                                 <span>✅ Recorded</span>` : 
+                                'No recording yet'}
+                        </td>
+                        <td align="center">
+                            <button onclick="startRecording('${phonemeId}')">🎤 Record</button>
+                            ${hasRecording ? 
+                                `<button onclick="playRecording('${phonemeId}')">▶ Play</button>
+                                 <button onclick="deleteRecording('${phonemeId}')">🗑 Delete</button>` : 
+                                ''}
+                        </td>
+                    `;
+                    table.appendChild(row);
+                });
+                
+                categoryDiv.appendChild(table);
+                container.appendChild(categoryDiv);
+                container.appendChild(document.createElement('br'));
+            }
+        }
+        
+        // Start recording for a specific phoneme
+        async function startRecording(phonemeId) {
+            currentRecordingPhoneme = phonemeId;
+            
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream);
+                audioChunks = [];
+                
+                mediaRecorder.ondataavailable = event => {
+                    audioChunks.push(event.data);
+                };
+                
+                mediaRecorder.onstop = () => {
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                    const audioUrl = URL.createObjectURL(audioBlob);
+                    
+                    // Save to localStorage
+                    recordings[phonemeId] = audioUrl;
+                    localStorage.setItem('phonemeRecordings', JSON.stringify(recordings));
+                    
+                    // Update UI
+                    generatePhonemeTable();
+                    
+                    // Stop all tracks
+                    stream.getTracks().forEach(track => track.stop());
+                };
+                
+                mediaRecorder.start();
+                
+                // Update button
+                const button = event.target;
+                button.textContent = "⏹ Stop Recording";
+                button.onclick = stopRecording;
+                
+            } catch (err) {
+                alert('Error accessing microphone: ' + err.message);
+            }
+        }
+        
+        // Stop recording
+        function stopRecording() {
+            if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+                mediaRecorder.stop();
+            }
+        }
+        
+        // Play recording
+        function playRecording(phonemeId) {
+            const audio = document.getElementById(`audio-${phonemeId}`);
+            if (audio) {
+                audio.play();
+            }
+        }
+        
+        // Delete recording
+        function deleteRecording(phonemeId) {
+            if (confirm('Delete this recording?')) {
+                delete recordings[phonemeId];
+                localStorage.setItem('phonemeRecordings', JSON.stringify(recordings));
+                generatePhonemeTable();
+            }
+        }
+        
+        // Export all recordings
+        function exportRecordings() {
+            const dataStr = JSON.stringify(recordings);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            
+            const exportFileDefaultName = 'phoneme-recordings.json';
+            
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+        }
+        
+        // Import recordings
+        function importRecordings(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const imported = JSON.parse(e.target.result);
+                    Object.assign(recordings, imported);
+                    localStorage.setItem('phonemeRecordings', JSON.stringify(recordings));
+                    generatePhonemeTable();
+                    alert('Recordings imported successfully!');
+                } catch (err) {
+                    alert('Error importing file: ' + err.message);
+                }
+            };
+            reader.readAsText(file);
+        }
+        
+        // Clear all recordings
+        function clearAllRecordings() {
+            if (confirm('Clear ALL recordings? This cannot be undone.')) {
+                localStorage.removeItem('phonemeRecordings');
+                Object.keys(recordings).forEach(key => delete recordings[key]);
+                generatePhonemeTable();
+            }
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <h1>📝 English Phoneme Pronunciation Practice</h1>
+        
+        <div>
+            <h3>🎤 Recording Controls</h3>
+            <p>1. Click "Record" next to any phoneme<br>
+               2. Speak the phoneme clearly<br>
+               3. Click "Stop Recording" when done<br>
+               4. Use "Play" to listen to your recording</p>
+            
+            <button onclick="exportRecordings()">💾 Export All Recordings</button>
+            <button onclick="document.getElementById('importFile').click()">📥 Import Recordings</button>
+            <button onclick="clearAllRecordings()">🗑️ Clear All Recordings</button>
+            <input type="file" id="importFile" accept=".json" onchange="importRecordings(event)" style="display: none;">
+        </div>
+        
+        <hr>
+        
+        <div id="phonemeContainer">
+            <!-- Phoneme tables will be generated here -->
+        </div>
+        
+        <hr>
+        
+        <div>
+            <h3>💡 Tips for Recording</h3>
+            <p>• Use a quiet room with minimal background noise<br>
+               • Speak clearly and at a normal pace<br>
+               • Keep microphone about 6 inches from your mouth<br>
+               • Practice each phoneme multiple times</p>
+            
+            <h3>⚠️ Note</h3>
+            <p>Recordings are stored in your browser's local storage.<br>
+               Export your recordings to save them permanently.</p>
+        </div>
+    </center>
+</body>
+</html>
