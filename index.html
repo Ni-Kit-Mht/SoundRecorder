@@ -66,6 +66,28 @@
             buildTable();
         };
 
+        function blobToBase64(blob) {
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    resolve(reader.result.split(',')[1]);
+                };
+                reader.readAsDataURL(blob);
+            });
+        }
+
+        function isValidRecording(data) {
+            // Check if it's the new format (object with base64)
+            if (typeof data === 'object' && data.base64 && data.mime) {
+                return true;
+            }
+            // Old blob: URLs are invalid
+            if (typeof data === 'string' && data.startsWith('blob:')) {
+                return false;
+            }
+            return false;
+        }
+
         function buildTable() {
             const container = document.getElementById('phonemeContainer');
             container.innerHTML = '';
@@ -98,12 +120,25 @@
 
                     const cell3 = document.createElement('td');
                     cell3.align = 'center';
-                    if (recordings[id]) {
+                    
+                    const hasValidRecording = recordings[id] && isValidRecording(recordings[id]);
+                    
+                    if (hasValidRecording) {
                         const aud = document.createElement('audio');
                         aud.id = 'audio-' + id;
-                        aud.src = recordings[id];
-                        aud.controls = true;
-                        cell3.appendChild(aud);
+                        try {
+                            const audioBlob = new Blob(
+                                [Uint8Array.from(atob(recordings[id].base64), c => c.charCodeAt(0))],
+                                { type: recordings[id].mime }
+                            );
+                            aud.src = URL.createObjectURL(audioBlob);
+                            aud.controls = true;
+                            cell3.appendChild(aud);
+                        } catch (e) {
+                            cell3.innerHTML = '<span style="color: red;">Invalid recording</span>';
+                        }
+                    } else if (recordings[id]) {
+                        cell3.innerHTML = '<span style="color: orange;">⚠️ Old format (lost)</span>';
                     } else {
                         cell3.textContent = 'No recording yet';
                     }
@@ -116,7 +151,7 @@
                     recBtn.onclick = function() { toggleRecording(id); };
                     cell4.appendChild(recBtn);
 
-                    if (recordings[id]) {
+                    if (hasValidRecording) {
                         const playBtn = document.createElement('button');
                         playBtn.textContent = 'Play';
                         playBtn.onclick = function() { playAudio(id); };
@@ -125,6 +160,13 @@
 
                         const delBtn = document.createElement('button');
                         delBtn.textContent = 'Delete';
+                        delBtn.onclick = function() { deleteAudio(id); };
+                        cell4.appendChild(document.createTextNode(' '));
+                        cell4.appendChild(delBtn);
+                    } else if (recordings[id]) {
+                        // Allow deleting invalid entries
+                        const delBtn = document.createElement('button');
+                        delBtn.textContent = 'Remove';
                         delBtn.onclick = function() { deleteAudio(id); };
                         cell4.appendChild(document.createTextNode(' '));
                         cell4.appendChild(delBtn);
@@ -164,10 +206,15 @@
                         audioChunks.push(e.data);
                     };
 
-                    mediaRecorder.onstop = function() {
+                    mediaRecorder.onstop = async function() {
                         const blob = new Blob(audioChunks, { type: 'audio/webm' });
-                        const url = URL.createObjectURL(blob);
-                        recordings[id] = url;
+                        const base64 = await blobToBase64(blob);
+
+                        recordings[id] = {
+                            mime: blob.type,
+                            base64: base64
+                        };
+                        
                         recordingPhoneme = null;
                         
                         if (audioStream) {
@@ -210,12 +257,29 @@
         }
 
         function exportAll() {
-            const json = JSON.stringify(recordings);
+            // Only export valid recordings
+            const validRecordings = {};
+            let skipped = 0;
+            
+            for (let key in recordings) {
+                if (isValidRecording(recordings[key])) {
+                    validRecordings[key] = recordings[key];
+                } else {
+                    skipped++;
+                }
+            }
+            
+            const json = JSON.stringify(validRecordings, null, 2);
             const uri = 'data:application/json;charset=utf-8,' + encodeURIComponent(json);
             const link = document.createElement('a');
             link.href = uri;
             link.download = 'phoneme-recordings.json';
             link.click();
+            
+            if (skipped > 0) {
+                alert('Exported ' + Object.keys(validRecordings).length + ' valid recordings.\n' + 
+                      skipped + ' invalid/old recordings were skipped.');
+            }
         }
 
         function importAll(evt) {
@@ -226,22 +290,59 @@
             reader.onload = function(e) {
                 try {
                     const imported = JSON.parse(e.target.result);
+                    let validCount = 0;
+                    let invalidCount = 0;
+                    
                     for (let key in imported) {
-                        recordings[key] = imported[key];
+                        if (isValidRecording(imported[key])) {
+                            recordings[key] = imported[key];
+                            validCount++;
+                        } else {
+                            // Keep invalid entries to show warning, but mark them
+                            recordings[key] = imported[key];
+                            invalidCount++;
+                        }
                     }
+                    
                     buildTable();
-                    alert('Imported successfully!');
+                    
+                    if (invalidCount > 0) {
+                        alert('Import complete!\n\n' +
+                              '✓ Valid recordings: ' + validCount + '\n' +
+                              '⚠️ Invalid/lost recordings: ' + invalidCount + '\n\n' +
+                              'Invalid recordings show as "Old format (lost)" and cannot be played.\n' +
+                              'You will need to re-record these phonemes.');
+                    } else {
+                        alert('Successfully imported ' + validCount + ' recordings!');
+                    }
                 } catch (err) {
                     alert('Import error: ' + err.message);
                 }
             };
             reader.readAsText(file);
+            
+            // Reset file input
+            evt.target.value = '';
         }
 
         function clearAll() {
             if (confirm('Clear ALL recordings? This cannot be undone.')) {
                 recordings = {};
                 buildTable();
+            }
+        }
+
+        function removeInvalid() {
+            if (confirm('Remove all invalid/lost recordings from the list?')) {
+                const validRecordings = {};
+                for (let key in recordings) {
+                    if (isValidRecording(recordings[key])) {
+                        validRecordings[key] = recordings[key];
+                    }
+                }
+                recordings = validRecordings;
+                buildTable();
+                alert('Invalid recordings removed. You can now re-record those phonemes.');
             }
         }
     </script>
@@ -260,6 +361,7 @@
             <button onclick="exportAll()">Export All Recordings</button>
             <button onclick="document.getElementById('importFile').click()">Import Recordings</button>
             <button onclick="clearAll()">Clear All Recordings</button>
+            <button onclick="removeInvalid()" style="background-color: #ff9800; color: white;">Clean Up Invalid Recordings</button>
             <input type="file" id="importFile" accept=".json" onchange="importAll(event)" style="display: none;">
         </div>
         
@@ -278,9 +380,16 @@
                Keep microphone about 6 inches from your mouth<br>
                Practice each phoneme multiple times</p>
             
+            <h3>About Invalid Recordings</h3>
+            <p><span style="color: orange;">⚠️ Recordings marked as "Old format (lost)"</span> are from an older version<br>
+               that only saved temporary links, not actual audio data.<br>
+               These recordings cannot be recovered - you'll need to re-record them.<br>
+               Use the "Clean Up Invalid Recordings" button to remove them from your list.</p>
+            
             <h3>Note</h3>
-            <p>Recordings are stored in your browser's memory during this session.<br>
-               Export your recordings to save them permanently.</p>
+            <p>New recordings are stored as real audio data (Base64 format).<br>
+               Export your recordings to save them permanently and share them.<br>
+               Exported files will only contain valid recordings.</p>
         </div>
     </center>
 </body>
