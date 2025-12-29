@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>English Phoneme Pronunciation Practice</title>
     <script>
-        // Phoneme categories
         const phonemeCategories = {
             "Vowels": [
                 {symbol: "iː", example: "beat", ipa: "iː"},
@@ -57,199 +56,211 @@
             ]
         };
 
-        // Store recordings in localStorage
-        const recordings = JSON.parse(localStorage.getItem('phonemeRecordings') || '{}');
-        
-        // Audio recording variables
-        let mediaRecorder;
+        let recordings = {};
+        let mediaRecorder = null;
         let audioChunks = [];
-        let currentRecordingPhoneme = null;
-        
+        let recordingPhoneme = null;
+        let audioStream = null;
+
         window.onload = function() {
-            generatePhonemeTable();
+            buildTable();
         };
-        
-        function generatePhonemeTable() {
+
+        function buildTable() {
             const container = document.getElementById('phonemeContainer');
             container.innerHTML = '';
-            
-            for (const category in phonemeCategories) {
-                const categoryDiv = document.createElement('div');
-                categoryDiv.innerHTML = `<h2>${category}</h2>`;
-                
+
+            for (let category in phonemeCategories) {
+                const catDiv = document.createElement('div');
+                const title = document.createElement('h2');
+                title.textContent = category;
+                catDiv.appendChild(title);
+
                 const table = document.createElement('table');
-                table.setAttribute('border', '1');
-                table.setAttribute('width', '100%');
-                
-                // Table header
-                const headerRow = document.createElement('tr');
-                headerRow.innerHTML = `
-                    <th width="20%">Phoneme</th>
-                    <th width="30%">Example Word</th>
-                    <th width="30%">Your Recording</th>
-                    <th width="20%">Actions</th>
-                `;
-                table.appendChild(headerRow);
-                
-                // Phoneme rows
-                phonemeCategories[category].forEach(phoneme => {
+                table.border = '1';
+                table.width = '100%';
+
+                const thead = document.createElement('tr');
+                thead.innerHTML = '<th width="20%">Phoneme</th><th width="30%">Example Word</th><th width="30%">Your Recording</th><th width="20%">Actions</th>';
+                table.appendChild(thead);
+
+                phonemeCategories[category].forEach(function(phoneme) {
+                    const id = phoneme.symbol.replace(/[ːˈˌ]/g, '');
                     const row = document.createElement('tr');
-                    const phonemeId = phoneme.symbol.replace(/[ːˈ]/g, '');
+
+                    const cell1 = document.createElement('td');
+                    cell1.align = 'center';
+                    cell1.innerHTML = '<strong>/' + phoneme.symbol + '/</strong><br>[' + phoneme.ipa + ']';
+
+                    const cell2 = document.createElement('td');
+                    cell2.align = 'center';
+                    cell2.textContent = phoneme.example;
+
+                    const cell3 = document.createElement('td');
+                    cell3.align = 'center';
+                    if (recordings[id]) {
+                        const aud = document.createElement('audio');
+                        aud.id = 'audio-' + id;
+                        aud.src = recordings[id];
+                        aud.controls = true;
+                        cell3.appendChild(aud);
+                    } else {
+                        cell3.textContent = 'No recording yet';
+                    }
+
+                    const cell4 = document.createElement('td');
+                    cell4.align = 'center';
                     
-                    // Check if recording exists
-                    const hasRecording = recordings[phonemeId];
-                    
-                    row.innerHTML = `
-                        <td align="center">
-                            <strong>/${phoneme.symbol}/</strong><br>
-                            [${phoneme.ipa}]
-                        </td>
-                        <td align="center">${phoneme.example}</td>
-                        <td align="center">
-                            ${hasRecording ? 
-                                `<audio id="audio-${phonemeId}" src="${recordings[phonemeId]}"></audio>
-                                 <span>✅ Recorded</span>` : 
-                                'No recording yet'}
-                        </td>
-                        <td align="center">
-                            <button onclick="startRecording('${phonemeId}')">🎤 Record</button>
-                            ${hasRecording ? 
-                                `<button onclick="playRecording('${phonemeId}')">▶ Play</button>
-                                 <button onclick="deleteRecording('${phonemeId}')">🗑 Delete</button>` : 
-                                ''}
-                        </td>
-                    `;
+                    const recBtn = document.createElement('button');
+                    recBtn.textContent = recordingPhoneme === id ? 'Stop' : 'Record';
+                    recBtn.onclick = function() { toggleRecording(id); };
+                    cell4.appendChild(recBtn);
+
+                    if (recordings[id]) {
+                        const playBtn = document.createElement('button');
+                        playBtn.textContent = 'Play';
+                        playBtn.onclick = function() { playAudio(id); };
+                        cell4.appendChild(document.createTextNode(' '));
+                        cell4.appendChild(playBtn);
+
+                        const delBtn = document.createElement('button');
+                        delBtn.textContent = 'Delete';
+                        delBtn.onclick = function() { deleteAudio(id); };
+                        cell4.appendChild(document.createTextNode(' '));
+                        cell4.appendChild(delBtn);
+                    }
+
+                    row.appendChild(cell1);
+                    row.appendChild(cell2);
+                    row.appendChild(cell3);
+                    row.appendChild(cell4);
                     table.appendChild(row);
                 });
-                
-                categoryDiv.appendChild(table);
-                container.appendChild(categoryDiv);
+
+                catDiv.appendChild(table);
+                container.appendChild(catDiv);
                 container.appendChild(document.createElement('br'));
             }
         }
-        
-        // Start recording for a specific phoneme
-        async function startRecording(phonemeId) {
-            currentRecordingPhoneme = phonemeId;
-            
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                mediaRecorder = new MediaRecorder(stream);
-                audioChunks = [];
-                
-                mediaRecorder.ondataavailable = event => {
-                    audioChunks.push(event.data);
-                };
-                
-                mediaRecorder.onstop = () => {
-                    const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
-                    const audioUrl = URL.createObjectURL(audioBlob);
-                    
-                    // Save to localStorage
-                    recordings[phonemeId] = audioUrl;
-                    localStorage.setItem('phonemeRecordings', JSON.stringify(recordings));
-                    
-                    // Update UI
-                    generatePhonemeTable();
-                    
-                    // Stop all tracks
-                    stream.getTracks().forEach(track => track.stop());
-                };
-                
-                mediaRecorder.start();
-                
-                // Update button
-                const button = event.target;
-                button.textContent = "⏹ Stop Recording";
-                button.onclick = stopRecording;
-                
-            } catch (err) {
-                alert('Error accessing microphone: ' + err.message);
+
+        function toggleRecording(id) {
+            if (recordingPhoneme === id && mediaRecorder && mediaRecorder.state === 'recording') {
+                stopRecording();
+            } else {
+                startRecording(id);
             }
         }
-        
-        // Stop recording
+
+        function startRecording(id) {
+            recordingPhoneme = id;
+            audioChunks = [];
+
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(function(stream) {
+                    audioStream = stream;
+                    mediaRecorder = new MediaRecorder(stream);
+
+                    mediaRecorder.ondataavailable = function(e) {
+                        audioChunks.push(e.data);
+                    };
+
+                    mediaRecorder.onstop = function() {
+                        const blob = new Blob(audioChunks, { type: 'audio/webm' });
+                        const url = URL.createObjectURL(blob);
+                        recordings[id] = url;
+                        recordingPhoneme = null;
+                        
+                        if (audioStream) {
+                            audioStream.getTracks().forEach(function(track) {
+                                track.stop();
+                            });
+                            audioStream = null;
+                        }
+                        
+                        buildTable();
+                    };
+
+                    mediaRecorder.start();
+                    buildTable();
+                })
+                .catch(function(err) {
+                    alert('Microphone error: ' + err.message);
+                    recordingPhoneme = null;
+                });
+        }
+
         function stopRecording() {
-            if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+            if (mediaRecorder && mediaRecorder.state === 'recording') {
                 mediaRecorder.stop();
             }
         }
-        
-        // Play recording
-        function playRecording(phonemeId) {
-            const audio = document.getElementById(`audio-${phonemeId}`);
+
+        function playAudio(id) {
+            const audio = document.getElementById('audio-' + id);
             if (audio) {
                 audio.play();
             }
         }
-        
-        // Delete recording
-        function deleteRecording(phonemeId) {
+
+        function deleteAudio(id) {
             if (confirm('Delete this recording?')) {
-                delete recordings[phonemeId];
-                localStorage.setItem('phonemeRecordings', JSON.stringify(recordings));
-                generatePhonemeTable();
+                delete recordings[id];
+                buildTable();
             }
         }
-        
-        // Export all recordings
-        function exportRecordings() {
-            const dataStr = JSON.stringify(recordings);
-            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-            
-            const exportFileDefaultName = 'phoneme-recordings.json';
-            
-            const linkElement = document.createElement('a');
-            linkElement.setAttribute('href', dataUri);
-            linkElement.setAttribute('download', exportFileDefaultName);
-            linkElement.click();
+
+        function exportAll() {
+            const json = JSON.stringify(recordings);
+            const uri = 'data:application/json;charset=utf-8,' + encodeURIComponent(json);
+            const link = document.createElement('a');
+            link.href = uri;
+            link.download = 'phoneme-recordings.json';
+            link.click();
         }
-        
-        // Import recordings
-        function importRecordings(event) {
-            const file = event.target.files[0];
+
+        function importAll(evt) {
+            const file = evt.target.files[0];
             if (!file) return;
-            
+
             const reader = new FileReader();
             reader.onload = function(e) {
                 try {
                     const imported = JSON.parse(e.target.result);
-                    Object.assign(recordings, imported);
-                    localStorage.setItem('phonemeRecordings', JSON.stringify(recordings));
-                    generatePhonemeTable();
-                    alert('Recordings imported successfully!');
+                    for (let key in imported) {
+                        recordings[key] = imported[key];
+                    }
+                    buildTable();
+                    alert('Imported successfully!');
                 } catch (err) {
-                    alert('Error importing file: ' + err.message);
+                    alert('Import error: ' + err.message);
                 }
             };
             reader.readAsText(file);
         }
-        
-        // Clear all recordings
-        function clearAllRecordings() {
+
+        function clearAll() {
             if (confirm('Clear ALL recordings? This cannot be undone.')) {
-                localStorage.removeItem('phonemeRecordings');
-                Object.keys(recordings).forEach(key => delete recordings[key]);
-                generatePhonemeTable();
+                recordings = {};
+                buildTable();
             }
         }
     </script>
 </head>
 <body>
     <center>
-        <h1>📝 English Phoneme Pronunciation Practice</h1>
+        <h1>English Phoneme Pronunciation Practice</h1>
         
         <div>
-            <h3>🎤 Recording Controls</h3>
+            <h3>Recording Controls</h3>
             <p>1. Click "Record" next to any phoneme<br>
                2. Speak the phoneme clearly<br>
-               3. Click "Stop Recording" when done<br>
+               3. Click "Stop" when done<br>
                4. Use "Play" to listen to your recording</p>
             
-            <button onclick="exportRecordings()">💾 Export All Recordings</button>
-            <button onclick="document.getElementById('importFile').click()">📥 Import Recordings</button>
-            <button onclick="clearAllRecordings()">🗑️ Clear All Recordings</button>
-            <input type="file" id="importFile" accept=".json" onchange="importRecordings(event)" style="display: none;">
+            <button onclick="exportAll()">Export All Recordings</button>
+            <button onclick="document.getElementById('importFile').click()">Import Recordings</button>
+            <button onclick="clearAll()">Clear All Recordings</button>
+            <input type="file" id="importFile" accept=".json" onchange="importAll(event)" style="display: none;">
         </div>
         
         <hr>
@@ -261,14 +272,14 @@
         <hr>
         
         <div>
-            <h3>💡 Tips for Recording</h3>
-            <p>• Use a quiet room with minimal background noise<br>
-               • Speak clearly and at a normal pace<br>
-               • Keep microphone about 6 inches from your mouth<br>
-               • Practice each phoneme multiple times</p>
+            <h3>Tips for Recording</h3>
+            <p>Use a quiet room with minimal background noise<br>
+               Speak clearly and at a normal pace<br>
+               Keep microphone about 6 inches from your mouth<br>
+               Practice each phoneme multiple times</p>
             
-            <h3>⚠️ Note</h3>
-            <p>Recordings are stored in your browser's local storage.<br>
+            <h3>Note</h3>
+            <p>Recordings are stored in your browser's memory during this session.<br>
                Export your recordings to save them permanently.</p>
         </div>
     </center>
